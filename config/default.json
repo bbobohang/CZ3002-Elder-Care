@@ -1,0 +1,4 @@
+{
+	"mongoURI": "mongodb+srv://ASE9AMCLASS:ASE9amClass@cluster9am.di4mufr.mongodb.net/?retryWrites=true&w=majority",
+	"jwtSecret": "mysecrettoken"
+}
