@@ -49,7 +49,7 @@ router.post('/register', async (req, res) => {
 });
 
 //Logging in the user
-router.get('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
 	try {
 		const user = await User.findOne({ username: req.body.email });
 		if (!user)
@@ -63,7 +63,11 @@ router.get('/login', async (req, res) => {
 		if (!isPasswordCorrect)
 			return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
 
-		const token = jwt.sign({ id: user._id }, config.get('jwtSecret'));
+		//Maybe should not store the email in the token
+		const token = jwt.sign(
+			{ id: user._id, email: user.email, name: user.name },
+			config.get('jwtSecret')
+		);
 		const { password, ...others } = user._doc;
 		console.log('User Login');
 		res
@@ -81,7 +85,9 @@ router.get('/login', async (req, res) => {
 //Checking if the user token is in cookies, return user id
 router.get('/check', verifyToken, (req, res) => {
 	console.log(req.user);
-	return res.status(200).json({ id: req.user.id });
+	return res
+		.status(200)
+		.json({ id: req.user.id, name: req.user.name, email: req.user.email });
 });
 
 module.exports = router;
