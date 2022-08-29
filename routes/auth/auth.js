@@ -15,7 +15,7 @@ router.post('/register', async (req, res) => {
 
 		if (user) {
 			console.log('user exists');
-			return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
+			return res.status(400).json({ errors: { msg: 'User already exists' } });
 		}
 
 		//Creating the user object
@@ -53,7 +53,7 @@ router.post('/login', async (req, res) => {
 	try {
 		const user = await User.findOne({ username: req.body.email });
 		if (!user)
-			return res.status(400).json({ errors: [{ msg: 'User does not exists' }] });
+			return res.status(400).json({ errors: { msg: 'User does not exists' } });
 
 		const isPasswordCorrect = await bcrypt.compare(
 			req.body.password,
@@ -61,7 +61,7 @@ router.post('/login', async (req, res) => {
 		);
 
 		if (!isPasswordCorrect)
-			return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+			return res.status(400).json({ errors: { msg: 'Invalid Credentials' } });
 
 		//Maybe should not store the email in the token
 		const token = jwt.sign(
