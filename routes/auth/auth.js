@@ -39,6 +39,8 @@ router.post('/register', async (req, res) => {
 		res
 			.cookie('access_token', token, {
 				httpOnly: true,
+				secure: true,
+				expires: new Date(Date.now() + 3600000),
 			})
 			.status(200)
 			.json({ ...others });
@@ -51,7 +53,7 @@ router.post('/register', async (req, res) => {
 //Logging in the user
 router.post('/login', async (req, res) => {
 	try {
-		const user = await User.findOne({ username: req.body.email });
+		const user = await User.findOne({ email: req.body.email });
 		if (!user)
 			return res.status(400).json({ errors: { msg: 'User does not exists' } });
 
@@ -70,6 +72,7 @@ router.post('/login', async (req, res) => {
 		);
 		const { password, ...others } = user._doc;
 		console.log('User Login');
+
 		res
 			.cookie('access_token', token, {
 				httpOnly: true,

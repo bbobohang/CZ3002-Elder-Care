@@ -4,6 +4,7 @@ const config = require('config');
 const verifyToken = (req, res, next) => {
 	try {
 		const token = req.cookies.access_token;
+		console.log(token);
 		if (!token)
 			return res.status(401).json({ errors: [{ msg: 'User not logged in' }] });
 
