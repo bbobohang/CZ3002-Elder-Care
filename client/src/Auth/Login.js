@@ -1,5 +1,8 @@
 //This is the login front and back end integration code
 import { useState, useRef } from 'react';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 const Login = () => {
 	const [login, setLogin] = useState({});
@@ -8,19 +11,43 @@ const Login = () => {
 
 	const handleClick = async () => {
 		try {
-			const requestOptions = {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					email: refEmail.current.value,
-					password: refPassword.current.value,
-				}),
+			// const requestOptions = {
+			// 	credentials: 'same-origin',
+			// 	method: 'POST',
+			// 	headers: { 'Content-Type': 'application/json' },
+			// 	body: JSON.stringify({
+			// 		email: refEmail.current.value,
+			// 		password: refPassword.current.value,
+			// 	}),
+			// };
+			// fetch('http://localhost:5000/api/auth/login', requestOptions)
+			// 	.then((response) => response.json())
+			// 	.then((data) => {
+			// 		console.log(data);
+			// 		setLogin(data);
+			// 	});
+			let axiosConfig = {
+				headers: {
+					'Content-Type': 'application/json',
+				},
 			};
-			fetch('http://localhost:5000/api/auth/login', requestOptions)
-				.then((response) => response.json())
-				.then((data) => {
-					console.log(data);
-					setLogin(data);
+
+			let postData = {
+				email: refEmail.current.value,
+				password: refPassword.current.value,
+			};
+
+			axios
+				.post(`/api/auth/login`, postData, axiosConfig, {
+					withCredentials: true,
+					crendentials: true,
+				})
+				.then((response) => {
+					if (response.status == 200) {
+						cookies.set('access_token', response.data, { path: '/' });
+					}
+					console.log(response.data);
+					setLogin(response.data);
 				});
 		} catch (error) {
 			console.log(error);

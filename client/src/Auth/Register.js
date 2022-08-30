@@ -13,6 +13,7 @@ const Register = () => {
 					email: refInput.current[0].value,
 					name: refInput.current[1].value,
 					password: refInput.current[2].value,
+					role: refInput.current[3].value,
 				}),
 			};
 
@@ -37,9 +38,11 @@ const Register = () => {
 				<input type='text' name='Name' />
 				<h3>Password</h3>
 				<input type='password' name='Password' />
+				<h3>Role</h3>
+				<input type='text' name='Role' />
 			</form>
 
-			<button onClick={handleClick}>Log in</button>
+			<button onClick={handleClick}>Register</button>
 			{register.email && <div>{register.name} has been registered! </div>}
 			{register.errors && <div>{register.errors.msg} </div>}
 		</>
