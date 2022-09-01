@@ -4,6 +4,7 @@ import Register from './Auth/Register';
 import Login from './Auth/Login';
 import PrivateRoute from './Routes/PrivateRoute';
 import Home from './Components/Home';
+import PatientRecord from './Components/PatientRecord';
 function App() {
 	return (
 		<BrowserRouter>
@@ -11,6 +12,7 @@ function App() {
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Register />} />
 				<Route path='home' element={<PrivateRoute component={Home} />} />
+				<Route path='record' element={<PrivateRoute component={PatientRecord} />} />
 			</Routes>
 		</BrowserRouter>
 	);

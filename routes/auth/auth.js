@@ -23,6 +23,7 @@ router.post('/register', async (req, res) => {
 			name: req.body.name,
 			email: req.body.email,
 			password: req.body.password,
+			role: req.body.role,
 		});
 
 		const salt = await bcrypt.genSalt(10);
@@ -67,7 +68,7 @@ router.post('/login', async (req, res) => {
 
 		//Maybe should not store the email in the token
 		const token = jwt.sign(
-			{ id: user._id, email: user.email, name: user.name },
+			{ id: user._id, email: user.email, name: user.name, role: user.role },
 			config.get('jwtSecret')
 		);
 		const { password, ...others } = user._doc;
@@ -88,9 +89,12 @@ router.post('/login', async (req, res) => {
 //Checking if the user token is in cookies, return user id
 router.get('/check', verifyToken, (req, res) => {
 	console.log(req.user);
-	return res
-		.status(200)
-		.json({ id: req.user.id, name: req.user.name, email: req.user.email });
+	return res.status(200).json({
+		id: req.user.id,
+		name: req.user.name,
+		email: req.user.email,
+		role: req.user.role,
+	});
 });
 
 module.exports = router;
