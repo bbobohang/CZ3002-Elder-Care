@@ -16,10 +16,10 @@ router.get('/all', async (req, res) => {
 	}
 });
 
-// @route GET record/:id
+// @route GET record/id/:id
 // @descr Get patients record by id
 // @role Doctor
-router.get('/:id', async (req, res) => {
+router.get('/id/:id', async (req, res) => {
 	try {
 		const record = await Record.findOne({ patient_id: req.params.id });
 
@@ -35,27 +35,26 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
-// @route GET record/:id
-// @descr Get patients record by id
+// @route GET record/current
+// @descr Get current patients record
 // @role Patient
-// router.get('/current', verifyToken, async (req, res) => {
-// 	console.log('in');
-// 	try {
-// 		const record = await Record.findOne({
-// 			patient_id: req.user.id,
-// 		});
-// 		console.log(record);
-// 		if (!record)
-// 			return res
-// 				.status(400)
-// 				.json({ errors: { msg: "Patient's record not found" } });
+router.get('/current', verifyToken, async (req, res) => {
+	try {
+		const record = await Record.findOne({
+			patient_id: req.user.id,
+		});
 
-// 		return res.status(200).json(record);
-// 	} catch (error) {
-// 		console.log(error.message);
-// 		res.status(500).send('Server Error');
-// 	}
-// });
+		if (!record)
+			return res
+				.status(400)
+				.json({ errors: { msg: "Patient's record not found" } });
+
+		return res.status(200).json(record);
+	} catch (error) {
+		console.log(error.message);
+		res.status(500).send('Server Error');
+	}
+});
 
 // @route POST record/update
 // @descr Create/Update patient's record to DB

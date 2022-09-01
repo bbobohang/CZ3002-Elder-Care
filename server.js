@@ -16,6 +16,7 @@ app.use(cookieParser());
 //Define routes
 app.use('/api/auth', require('./routes/auth/auth'));
 app.use('/api/record', require('./routes/record/record'));
+app.use('/api/med', require('./routes/med/med'));
 
 app.listen(PORT, (error) => {
 	if (!error)
