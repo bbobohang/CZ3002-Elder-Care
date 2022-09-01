@@ -15,10 +15,7 @@ app.use(express.json());
 app.use(cookieParser());
 //Define routes
 app.use('/api/auth', require('./routes/auth/auth'));
-
-app.get('/', (req, res) => {
-	res.status(200).send('<h1>Hello there</h1>');
-});
+app.use('/api/record', require('./routes/record/record'));
 
 app.listen(PORT, (error) => {
 	if (!error)
