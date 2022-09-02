@@ -1,0 +1,232 @@
+.headerWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.headerContainer {
+	background-color: var(--secondary-green);
+	height: 400px;
+	display: flex;
+	flex-direction: row;
+	width: 1120px;
+	justify-content: center;
+	position: relative;
+}
+.headerRight,
+.headerLeft {
+	display: flex;
+	flex-direction: column;
+}
+
+.headerLeft {
+	flex: 1;
+	flex-direction: column;
+	justify-content: top;
+	padding-top: 40px;
+	gap: 25px;
+}
+.headerLeft > h1 {
+	margin: 0px;
+}
+
+.headerLeft > p {
+	margin: 0px;
+}
+.headerRight {
+	flex: 1;
+	background-image: url('../../asset/female_doc.png');
+	height: 400px; /* You must set a specified height */
+	background-position: center; /* Center the image */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.headerBtn {
+	width: 200px;
+	padding: 10px;
+	border-radius: 20px;
+	border: none;
+	background-color: var(--primary-green);
+	color: white;
+	cursor: pointer;
+}
+
+.headerBanner {
+	position: absolute;
+	bottom: -50px;
+	width: 800px;
+	height: 120px;
+	background-color: var(--primary-nude);
+	overflow: visible;
+	align-items: center;
+	display: flex;
+	box-shadow: 0 3px 20px rgb(0 0 0 / 0.2);
+}
+.innerBanner {
+	display: flex;
+	width: 800px;
+	flex-direction: row;
+	justify-content: center;
+
+	align-items: center;
+	padding: 20px;
+}
+.innerContainer > p,
+.innerContainer > h2 {
+	margin: 0px;
+}
+.innerContainer > p {
+	color: var(--primary-green);
+}
+.innerContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	width: 250px;
+}
+.innerContainer.innerContainerBorder {
+	border-left: 1px solid #000;
+}
+.bookContainer {
+	background-color: var(--primary-bg);
+	height: 1000px;
+	padding-top: 100px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.bookContent {
+	width: 1120px;
+	height: inherit;
+}
+.bookHeader {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.bookHeader > p {
+	font-size: 14px;
+	color: gray;
+	text-align: center;
+}
+
+.bookHeader > h2::after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 2px;
+	width: 50%;
+	margin-top: 15px;
+	background: #000;
+}
+.bookTilesContainer {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 40px;
+	align-items: center;
+	justify-content: center;
+}
+.bookTiles {
+	height: 300px;
+	width: 400px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 3px 20px rgb(0 0 0 / 0.2);
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+	transition: ease-in 0.2s;
+}
+.bookTiles:hover {
+	transform: scale(1.05);
+}
+.bookTilesLogo {
+	flex: 3;
+	width: 150px;
+	height: 150px;
+	object-fit: contain;
+}
+
+.bookTilesLogo > img {
+	margin-top: 20px;
+	width: 150px;
+	height: 150px;
+}
+.bookTilesTitle {
+	flex: 1;
+	font-size: 20px;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+}
+.bookTilesSubtitle {
+	flex: 1;
+	font-weight: light;
+	color: gray;
+	margin-bottom: 10px;
+}
+.bookTilesLogo,
+.bookTilesSubtitle,
+.bookTilesTitle {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.buttonWrapper {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	margin-top: 80px;
+}
+.planContainer {
+	height: 400px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	background: white;
+}
+.planWrapper {
+	width: 800px;
+	display: flex;
+	flex-direction: row;
+	height: 400px;
+	justify-content: center;
+	align-items: center;
+}
+.planLeft {
+	flex: 1;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+.planLeft > p {
+	color: gray;
+	margin-bottom: 30px;
+}
+
+.planLeft > h2::after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 2px;
+	width: 50%;
+	margin-top: 15px;
+	background: #000;
+}
+.planRight {
+	flex: 1;
+
+	flex: 1;
+	background-image: url('../../asset/home_bottom.png');
+	height: 300px; /* You must set a specified height */
+	background-position: center; /* Center the image */
+	background-repeat: no-repeat; /* Do not repeat the image */
+	background-size: cover; /* Resize the background image to cover the entire container */
+}
