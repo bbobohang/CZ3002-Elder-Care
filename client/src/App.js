@@ -13,8 +13,11 @@ function App() {
 			<Routes>
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Register />} />
-				<Route path='home' element={<PrivateRoute component={PatientHome} />} />
-				<Route path='record' element={<PrivateRoute component={PatientRecord} />} />
+				<Route path='phome' element={<PrivateRoute component={PatientHome} />} />
+				<Route
+					path='precord'
+					element={<PrivateRoute component={PatientRecord} />}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);
