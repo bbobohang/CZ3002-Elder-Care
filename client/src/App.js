@@ -5,7 +5,7 @@ import Login from './Auth/Login';
 import PrivateRoute from './Routes/PrivateRoute';
 import PatientHome from './Components/patient/PatientHome';
 import PatientRecord from './Components/PatientRecord';
-
+import MedDelivery from './Components/patient/MedDelivery';
 import './App.css';
 function App() {
 	return (
@@ -18,6 +18,7 @@ function App() {
 					path='precord'
 					element={<PrivateRoute component={PatientRecord} />}
 				/>
+				<Route path='pmed' element={<PrivateRoute component={MedDelivery} />} />
 			</Routes>
 		</BrowserRouter>
 	);

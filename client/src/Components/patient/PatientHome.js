@@ -29,7 +29,7 @@ const Data = [
 		subtitle:
 			'Buy your medicines with our mobile application with a simple delivery system',
 		image: MedDelivery,
-		link: '/login',
+		link: '/pmed',
 	},
 	{
 		title: 'Home Care and Nursing',
@@ -60,15 +60,15 @@ const PatientHome = () => {
 					<div className='headerBanner'>
 						<div className='innerBanner'>
 							<div className='innerContainer'>
-								<h2>900+</h2>
+								<h1>900+</h1>
 								<p>Verified Specialists</p>
 							</div>
 							<div className='innerContainer innerContainerBorder'>
-								<h2>2000+</h2>
+								<h1>2000+</h1>
 								<p>Patients Recovered</p>
 							</div>
 							<div className='innerContainer innerContainerBorder'>
-								<h2>99.7%</h2>
+								<h1>99.7%</h1>
 								<p>Positive Feedback</p>
 							</div>
 						</div>
@@ -78,7 +78,7 @@ const PatientHome = () => {
 			<div className='bookContainer'>
 				<div className='bookContent'>
 					<div className='bookHeader'>
-						<h2>Book a Service</h2>
+						<h1>Book a Service</h1>
 						<p>
 							We provide to you the best choiches for you. Adjust it to your health
 							needs and make sure you undergo treatment with our highly qualified

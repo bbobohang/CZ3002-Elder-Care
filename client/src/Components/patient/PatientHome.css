@@ -8,7 +8,7 @@
 	height: 400px;
 	display: flex;
 	flex-direction: row;
-	width: 1120px;
+	width: 1024px;
 	justify-content: center;
 	position: relative;
 }
@@ -72,7 +72,7 @@
 	padding: 20px;
 }
 .innerContainer > p,
-.innerContainer > h2 {
+.innerContainer > h1 {
 	margin: 0px;
 }
 .innerContainer > p {
