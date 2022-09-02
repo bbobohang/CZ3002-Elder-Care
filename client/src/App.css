@@ -3,6 +3,8 @@
 	--secondary-green: #dce9e2;
 	--primary-nude: #fffaf1;
 	--primary-bg: #f7f9f9;
+	--box_shadow: 0 3px 20px rgb(0 0 0 / 0.2);
+	--primary-gray: #f3f2f5;
 }
 
 body {
