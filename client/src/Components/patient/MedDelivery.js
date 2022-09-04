@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './MedDelivery.css';
 import Navbar from '../../Components/patient/Navbar';
 import Footer from '../../Components/patient/Footer';
+import axios from 'axios';
 
 const MedType = [
 	{
@@ -77,6 +78,28 @@ const DeliverTime = [
 const MedDelivery = () => {
 	const [typeState, setType] = useState('');
 	const [timeState, setTime] = useState('');
+	const [medSucess, setMedSucess] = useState(false);
+	const quantityRef = useRef();
+
+	//Submit button
+	const handleClick = async () => {
+		let axiosConfig = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+
+		let postData = {
+			time: timeState,
+			medication_name: typeState,
+			medication_quantity: quantityRef.current.value,
+		};
+
+		axios.post(`/api/med/create`, postData, axiosConfig).then((response) => {
+			setMedSucess(true);
+			console.log(response);
+		});
+	};
 	return (
 		<>
 			<Navbar />
@@ -112,6 +135,19 @@ const MedDelivery = () => {
 
 			<div className='medContainer'>
 				<div className='medWrapper'>
+					<div className={medSucess === true ? 'overlay' : 'overlay hidden'}>
+						<button
+							className='headerBtn'
+							onClick={() => {
+								setMedSucess(!medSucess);
+							}}
+						>
+							openclose
+						</button>
+					</div>
+					<div className={medSucess === true ? 'medPopup' : 'medPopup hidden'}>
+						Medication has been booked!
+					</div>
 					<div className='medType'>
 						<div className='Title'>
 							<h2>Select A Medication Type</h2>
@@ -138,7 +174,11 @@ const MedDelivery = () => {
 						<div className='Title'>
 							<h2>Enter A Quantity</h2>
 							<form>
-								<input className='quantityInput' placeholder='Eg: 3 Bottles' />
+								<input
+									ref={quantityRef}
+									className='quantityInput'
+									placeholder='Eg: 3 Bottles'
+								/>
 							</form>
 						</div>
 					</div>
@@ -167,7 +207,9 @@ const MedDelivery = () => {
 						</div>
 					</div>
 					<div className='submitContainer'>
-						<button className='headerBtn'>Book Now</button>
+						<button className='headerBtn' onClick={handleClick}>
+							Book Now
+						</button>
 					</div>
 					<div>Selected med: {typeState}</div>
 					<div>Selected Time: {timeState}</div>
