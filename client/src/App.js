@@ -7,6 +7,8 @@ import PatientHome from './Components/patient/PatientHome';
 import PatientRecord from './Components/PatientRecord';
 import MedDelivery from './Components/patient/MedDelivery';
 import './App.css';
+import MedPreConfirm from './Components/patient/MedPreConfirm';
+import MedConfirmed from './Components/patient/MedConfirmed';
 function App() {
 	return (
 		<BrowserRouter>
@@ -19,6 +21,14 @@ function App() {
 					element={<PrivateRoute component={PatientRecord} />}
 				/>
 				<Route path='pmed' element={<PrivateRoute component={MedDelivery} />} />
+				<Route
+					path='pmed/preconfirm'
+					element={<PrivateRoute component={MedPreConfirm} />}
+				/>
+				<Route
+					path='pmed/med-booking-confirmed'
+					element={<PrivateRoute component={MedConfirmed} />}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);

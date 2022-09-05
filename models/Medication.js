@@ -11,6 +11,9 @@ const MedicationSchema = new mongoose.Schema({
 	time: {
 		type: String,
 	},
+	date: {
+		type: String,
+	},
 	medication_name: {
 		type: String,
 	},

@@ -3,6 +3,7 @@ import './MedDelivery.css';
 import Navbar from '../../Components/patient/Navbar';
 import Footer from '../../Components/patient/Footer';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const MedType = [
 	{
@@ -80,6 +81,8 @@ const MedDelivery = () => {
 	const [timeState, setTime] = useState('');
 	const [medSucess, setMedSucess] = useState(false);
 	const quantityRef = useRef();
+	const dateRef = useRef();
+	const navigate = useNavigate();
 
 	//Submit button
 	const handleClick = async () => {
@@ -93,11 +96,18 @@ const MedDelivery = () => {
 			time: timeState,
 			medication_name: typeState,
 			medication_quantity: quantityRef.current.value,
+			medication_date: dateRef.current.value,
 		};
 
 		axios.post(`/api/med/create`, postData, axiosConfig).then((response) => {
 			setMedSucess(true);
 			console.log(response);
+		});
+
+		navigate('/pmed/preconfirm', {
+			state: {
+				orderDetails: postData,
+			},
 		});
 	};
 	return (
@@ -135,19 +145,6 @@ const MedDelivery = () => {
 
 			<div className='medContainer'>
 				<div className='medWrapper'>
-					<div className={medSucess === true ? 'overlay' : 'overlay hidden'}>
-						<button
-							className='headerBtn'
-							onClick={() => {
-								setMedSucess(!medSucess);
-							}}
-						>
-							openclose
-						</button>
-					</div>
-					<div className={medSucess === true ? 'medPopup' : 'medPopup hidden'}>
-						Medication has been booked!
-					</div>
 					<div className='medType'>
 						<div className='Title'>
 							<h2>Select A Medication Type</h2>
@@ -206,15 +203,26 @@ const MedDelivery = () => {
 							</div>
 						</div>
 					</div>
+					<div className='medQuatity'>
+						<div className='Title'>
+							<h2>Enter A Date</h2>
+							<form>
+								<input
+									ref={dateRef}
+									className='quantityInput'
+									placeholder='Eg: 14 Aug 2022'
+								/>
+							</form>
+						</div>
+					</div>
 					<div className='submitContainer'>
 						<button className='headerBtn' onClick={handleClick}>
 							Book Now
 						</button>
 					</div>
-					<div>Selected med: {typeState}</div>
-					<div>Selected Time: {timeState}</div>
 				</div>
 			</div>
+
 			<Footer />
 		</>
 	);

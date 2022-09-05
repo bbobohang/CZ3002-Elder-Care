@@ -1,0 +1,47 @@
+.confirmedContainer {
+	display: flex;
+	justify-content: center;
+	background-color: var(--primary-bg);
+}
+.confirmedWrapper {
+	width: 1024px;
+	height: 400px;
+	margin-top: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.confirmedBanner {
+	width: 1024px;
+	height: 200px;
+	background-color: var(--secondary-green);
+	display: flex;
+	flex-direction: row;
+}
+.leftConfirmed,
+.rightConfirmed {
+	display: flex;
+}
+
+.rightConfirmed {
+	flex: 5;
+	flex-direction: column;
+	padding: 10px;
+	justify-content: center;
+}
+
+.rightConfirmed > h2 {
+	margin: 0px;
+}
+.leftConfirmed {
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+}
+.backHomeContainer {
+	width: 1024px;
+	display: flex;
+	justify-content: end;
+	margin-top: 40px;
+}
