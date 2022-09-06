@@ -1,0 +1,43 @@
+.preContainer {
+	display: flex;
+	justify-content: center;
+	background-color: var(--primary-bg);
+}
+.preWrapper {
+	width: 1024px;
+	height: 800px;
+	margin-top: 60px;
+	display: flex;
+	flex-direction: column;
+}
+.preFirstRow {
+	display: flex;
+	flex-direction: row;
+	width: 1024px;
+	border-bottom: 1px solid gray;
+	margin-top: 20px;
+	padding-bottom: 20px;
+}
+.preTitle {
+	margin-top: 40px;
+	font-weight: bold;
+	font-size: 28px;
+	border-left: 4px solid #000;
+	padding-left: 20px;
+	margin-bottom: 40px;
+}
+.preLeft,
+.preRight {
+	width: 512px;
+}
+.preLeft {
+	color: gray;
+}
+
+.preRight {
+	font-weight: bold;
+}
+.preLeft > p,
+.preRight > p {
+	margin: 10px;
+}

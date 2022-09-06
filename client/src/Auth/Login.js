@@ -3,30 +3,15 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 
+import { useNavigate } from 'react-router-dom';
 const cookies = new Cookies();
 
 const Login = () => {
-	const [login, setLogin] = useState({});
 	const refEmail = useRef('');
 	const refPassword = useRef('');
-
+	const navigate = useNavigate();
 	const handleClick = async () => {
 		try {
-			// const requestOptions = {
-			// 	credentials: 'same-origin',
-			// 	method: 'POST',
-			// 	headers: { 'Content-Type': 'application/json' },
-			// 	body: JSON.stringify({
-			// 		email: refEmail.current.value,
-			// 		password: refPassword.current.value,
-			// 	}),
-			// };
-			// fetch('http://localhost:5000/api/auth/login', requestOptions)
-			// 	.then((response) => response.json())
-			// 	.then((data) => {
-			// 		console.log(data);
-			// 		setLogin(data);
-			// 	});
 			let axiosConfig = {
 				headers: {
 					'Content-Type': 'application/json',
@@ -47,8 +32,11 @@ const Login = () => {
 					if (response.status == 200) {
 						cookies.set('access_token', response.data, { path: '/' });
 					}
-					console.log(response.data);
-					setLogin(response.data);
+					if (response.data.role === 'patient') {
+						navigate('/phome', { replace: true });
+					} else {
+						navigate('/dhome', { replace: true });
+					}
 				});
 		} catch (error) {
 			console.log(error);
@@ -63,7 +51,6 @@ const Login = () => {
 			<h3>Password</h3>
 			<input ref={refPassword} type='text' name='password' />
 			<button onClick={handleClick}>Log in</button>
-			{login.email && <div>{login.email} has been logged in!</div>}
 		</div>
 	);
 };
