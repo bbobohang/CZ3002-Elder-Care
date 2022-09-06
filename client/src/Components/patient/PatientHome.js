@@ -15,14 +15,14 @@ const Data = [
 		subtitle:
 			'Choose your doctor from thousands of specialist, general, and trusted hospitals',
 		image: TeleLogo,
-		link: '/login',
+		link: '/teleDoctor',
 	},
 	{
 		title: 'Home Doctor',
 		subtitle:
 			'Consult our trusted doctors in the comfort fo your home and get the best recomendations',
 		image: HomeDocLogo,
-		link: '/login',
+		link: '/homeDoctor',
 	},
 	{
 		title: 'Medicine Delivery',
