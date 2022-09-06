@@ -1,7 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
 
 import Register from './Auth/Register';
 import Login from './Auth/Login';
+import TeleDoctor from './Components/patient/TeleDoctor';
+import HomeDoctor from './Components/patient/HomeDoctor';
 import PrivateRoute from './Routes/PrivateRoute';
 import PatientHome from './Components/patient/PatientHome';
 import PatientRecord from './Components/PatientRecord';
@@ -14,6 +17,8 @@ function App() {
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Register />} />
 				<Route path='phome' element={<PrivateRoute component={PatientHome} />} />
+				<Route path='/teleDoctor' element={<TeleDoctor />} />
+				<Route path='/homeDoctor' element={<HomeDoctor />} />
 				<Route
 					path='precord'
 					element={<PrivateRoute component={PatientRecord} />}
