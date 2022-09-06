@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const verifyToken = require('../../utils/verifyToken');
-const Medication = require('../../models/Medication');
+const verifyToken = require('../../../utils/verifyToken');
+const Medication = require('../../../models/Medication');
 
 // @route POST med/update
 // @descr Create/Update patients medication's record to DB
