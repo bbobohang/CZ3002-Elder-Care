@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Navbar from "../../Components/patient/Navbar";
-import Footer from '../../Components/patient/Footer';
+import Footer from "../../Components/patient/Footer";
 import CalendarComponent from "./CalendarContainer";
 
 import "./MedDelivery.css";
 import "./PatientHome.css";
 import "./CalendarDiv.css";
-import "./TeleDoctor.css";
+import "./HomeDoctor.css";
 
 const DoctorType = [
   {
@@ -62,7 +62,7 @@ const ConsultTime = [
   },
 ];
 
-const TeleDoctor = () => {
+const HomeDoctor = () => {
   const [date, setDate] = useState("");
   const [timeState, setTime] = useState("");
   const [doctorType, setDoctorType] = useState("");
@@ -78,13 +78,12 @@ const TeleDoctor = () => {
         <div className="headerContainer">
           <div className="headerLeft">
             <h1>
-              Tele-Consultation <br />
+              Home-Consultation <br />
               Session with a Doctor
             </h1>
             <p>
-              Skip the queue and get the advice you need from the comfort of
-              your own home.
-              <br /> Schedule an appointment at your convenience.
+              Skip the queue and get the consulting services you need from the comfort
+              <br /> of your own home. Schedule an appointment at your convenience.
             </p>
             <button className="headerBtn">BOOK AN APPOINTMENT</button>
           </div>
@@ -102,9 +101,9 @@ const TeleDoctor = () => {
             </div>
           </div>
         </div>
-      </div>      
+      </div>
       <div className="medContainer">
-        <div className="docWrapper">
+        <div className="homeDocWrapper">
           <div className="medType">
             <div className="Title">
               <h2>Select A Doctor </h2>
@@ -112,7 +111,7 @@ const TeleDoctor = () => {
                 {DoctorType.map((item, index) => (
                   <div
                     className={
-                      "docTypeCard" +
+                      "homeDocTypeCard" +
                       (doctorType === `${item.name}` ? "selectedType" : "")
                     }
                     key={index}
@@ -128,9 +127,17 @@ const TeleDoctor = () => {
               </div>
             </div>
           </div>
-          <div className = "Title">
-                <h2>Select An Appointment Date</h2>
-                <CalendarComponent  changeDate= {dataChangeHandler} date = {date}/>
+          <div className="medQuatity">
+            <div className="Title">
+              <h2>Enter An Address</h2>
+              <form>
+                <input className="quantityInput" placeholder="Eg: Blk 585B, Sengkang East Way, #5-760, S123456" />
+              </form>
+            </div>
+          </div>
+          <div className="Title">
+            <h2>Select An Appointment Date</h2>
+            <CalendarComponent changeDate={dataChangeHandler} date={date} />
           </div>
           <div>
             <div className="Title">
@@ -172,8 +179,7 @@ const TeleDoctor = () => {
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-
-export default TeleDoctor;
+export default HomeDoctor;

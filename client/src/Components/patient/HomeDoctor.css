@@ -1,0 +1,37 @@
+.homeDocTypeCard {
+	width: 180px;
+	height: 150px;
+	display: flex;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+	border-radius: 10px;
+	justify-content: center;
+    text-align: center;
+	align-items: center;
+	font-weight: bold;
+	font-size: 20px;
+	cursor: pointer;
+	background-color: white;
+}
+.homeDocTypeCard:hover {
+	box-shadow: 0 3px 20px rgb(1, 84, 58);
+}
+.homeDocTypeCardselectedType {
+	width: 180px;
+	height: 150px;
+	display: flex;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+	border-radius: 10px;
+	justify-content: center;
+    text-align: center;
+	align-items: center;
+	font-weight: bold;
+	font-size: 20px;
+	cursor: pointer;
+	background: var(--primary-green);
+}
+
+.homeDocWrapper {
+	width: 1024px;
+	height: 1250px;
+	margin-top: 60px;
+}

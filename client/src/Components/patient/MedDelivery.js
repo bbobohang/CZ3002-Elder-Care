@@ -144,6 +144,7 @@ const MedDelivery = () => {
 			</div>
 
 			<div className='medContainer'>
+				
 				<div className='medWrapper'>
 					<div className='medType'>
 						<div className='Title'>
