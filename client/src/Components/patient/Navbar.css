@@ -79,6 +79,7 @@ a:hover {
 	margin: 0;
 	text-decoration: none;
 	display: block;
+	cursor: pointer;
 }
 .navigation a:hover {
 	border-radius: 4px;

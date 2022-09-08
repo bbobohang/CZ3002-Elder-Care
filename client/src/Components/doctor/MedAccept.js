@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { TiTick, TiCancel } from 'react-icons/ti';
+import { FaFilter } from 'react-icons/fa';
 import { ImCancelCircle } from 'react-icons/im';
 import './MedAccept.css';
 import Navbar from '../patient/Navbar';
@@ -12,6 +12,7 @@ const MedAccept = () => {
 	const [popup, setPopup] = useState(false);
 	const [chosenMed, setChosenMed] = useState('');
 	const [username, setUsername] = useState('');
+	const [sortby, setSortby] = useState();
 	const inputRef = useRef();
 
 	useEffect(() => {
@@ -56,6 +57,34 @@ const MedAccept = () => {
 				console.log(response);
 				setUpdate(!update);
 			});
+	};
+
+	const sortStatus = (a, b) => {
+		if (sortby === 'status') {
+			if (a.acceptance < b.acceptance) {
+				return -1;
+			}
+			if (a.acceptance > b.acceptance) {
+				return 1;
+			}
+			return 0;
+		} else if (sortby === 'medName') {
+			if (a.medication_name < b.medication_name) {
+				return -1;
+			}
+			if (a.medication_name > b.medication_name) {
+				return 1;
+			}
+			return 0;
+		} else {
+			if (a.patient_name < b.patient_name) {
+				return -1;
+			}
+			if (a.patient_name > b.patient_name) {
+				return 1;
+			}
+			return 0;
+		}
 	};
 	return (
 		<>
@@ -110,6 +139,16 @@ const MedAccept = () => {
 						</div>
 					</div>
 					<div className='cardItemWrapper'>
+						<div className='cardFilter'>
+							<div class='navigation'>
+								<FaFilter size={25} />
+								<div class='navigation-content'>
+									<a onClick={() => setSortby('status')}>Status</a>
+									<a onClick={() => setSortby('medName')}>Medication Name</a>
+									<a onClick={() => setSortby('patientName')}>Patient Name</a>
+								</div>
+							</div>
+						</div>
 						<div className='card'>
 							<div className='cardItem'>Patient Name</div>
 							<div className='cardItem'>Medication Name</div>
@@ -117,18 +156,18 @@ const MedAccept = () => {
 							<div className='cardItem'>Status</div>
 							<div className='cardItem'>Accept</div>
 						</div>
-						{medOrder.map((item, index) => (
+						{medOrder.sort(sortStatus).map((item, index) => (
 							<div className='card' key={index}>
 								<div className='cardItem'>{item.patient_name}</div>
 								<div className='cardItem'>{item.medication_name}</div>
 								<div className='cardItem'>{item.medication_quantity}</div>
 								<div className='cardItem'>{item.acceptance}</div>
 								<div className='cardItem'>
-									<button id={item._id} onClick={handleAccept}>
-										<TiTick size={30} />
+									<button id={item._id} className='acceptBtn' onClick={handleAccept}>
+										Accept
 									</button>
-									<button id={item._id} onClick={openPopup}>
-										<TiCancel size={30} />
+									<button id={item._id} className='rejectBtn' onClick={openPopup}>
+										Reject
 									</button>
 								</div>
 							</div>

@@ -25,6 +25,7 @@
 	border: 1px solid gray;
 	padding: 20px;
 	border-radius: 20px;
+	padding-top: 30px;
 }
 .popup {
 	position: absolute;
@@ -55,4 +56,40 @@
 .cardItem,
 .cardItemTitle {
 	width: 200px;
+}
+.cardItem {
+	padding: 10px;
+	display: flex;
+	gap: 15px;
+}
+.acceptBtn,
+.rejectBtn {
+	width: 80px;
+	height: 30px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	border-radius: 100px;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	box-shadow: var(--box_shadow);
+}
+.acceptBtn {
+	background-color: var(--primary-green);
+}
+.rejectBtn {
+	border: 1px solid gray;
+}
+.cardFilter {
+	display: flex;
+	justify-content: flex-end;
+	width: 950px;
+}
+.navigation a {
+	color: black;
+	padding: 12px;
+	margin: 0;
+	text-decoration: none;
+	display: block;
 }

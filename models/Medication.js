@@ -22,7 +22,7 @@ const MedicationSchema = new mongoose.Schema({
 	},
 	acceptance: {
 		type: String,
-		default: 'false',
+		default: 'pending',
 	},
 	rejectedMessage: {
 		type: String,
