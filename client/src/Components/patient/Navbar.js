@@ -1,8 +1,21 @@
-import React from 'react';
-import './Navbar.css';
+import React, { useState } from 'react';
 import Logo from '../../asset/eldercare.jpg';
 import { CgProfile } from 'react-icons/cg';
+import axios from 'axios';
+
+import './Navbar.css';
+import { useNavigate } from 'react-router-dom';
+
 const Navbar = () => {
+	const navigate = useNavigate();
+	const logout = () => {
+		axios.post(`/api/auth/logout`).then((response) => {
+			console.log(response);
+		});
+
+		navigate('/login');
+	};
+
 	return (
 		<div className='row'>
 			<nav className='nav'>
@@ -12,7 +25,7 @@ const Navbar = () => {
 					</div>
 					<ul className='navList'>
 						<li className='navItem'>
-							<a className='listItem' href='/record'>
+							<a className='listItem' href='/phome'>
 								Home
 							</a>
 						</li>
@@ -32,8 +45,21 @@ const Navbar = () => {
 							</a>
 						</li>
 						<li className='navItem'>
-							<a className='listItem listIcon' href='#experiences'>
-								<CgProfile size={25} />
+							<a className='listItem' href='/pmed/status'>
+								Med Orders
+							</a>
+						</li>
+						<li className='navItem'>
+							<a className='listItem'>
+								<div class='navigation'>
+									<CgProfile size={25} />
+									<div class='navigation-content'>
+										<a href='#'>Profile</a>
+										<a href='#' onClick={logout}>
+											Log Out
+										</a>
+									</div>
+								</div>
 							</a>
 						</li>
 					</ul>

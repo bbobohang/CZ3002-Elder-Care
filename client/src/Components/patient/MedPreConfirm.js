@@ -9,6 +9,7 @@ import Footer from './Footer';
 const MedPreConfirm = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
+	console.log(location);
 	return (
 		<>
 			<Navbar />
@@ -57,11 +58,10 @@ const MedPreConfirm = () => {
 					<div className='preFirstRow'>
 						<div className='preLeft'>
 							<p>Delivery Date</p>
-							<p>Estimated Delivery Time Picked</p>
 							<p>Delivery Address</p>
 						</div>
 						<div className='preRight'>
-							<p>{location.state.orderDetails.medication_date}</p>
+							<p>{location.state.orderDetails.date}</p>
 							<p>{location.state.orderDetails.time}</p>
 							<p>1223 abc road, #01-01, S123456</p>
 						</div>

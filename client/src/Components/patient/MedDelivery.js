@@ -4,7 +4,7 @@ import Navbar from '../../Components/patient/Navbar';
 import Footer from '../../Components/patient/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import CalendarComponent from './CalendarContainer';
 const MedType = [
 	{
 		name: 'Allegies',
@@ -80,12 +80,17 @@ const MedDelivery = () => {
 	const [typeState, setType] = useState('');
 	const [timeState, setTime] = useState('');
 	const [medSucess, setMedSucess] = useState(false);
+	const [date, setDate] = useState('');
 	const quantityRef = useRef();
-	const dateRef = useRef();
+
 	const navigate = useNavigate();
 
+	const dataChangeHandler = (date) => {
+		setDate(date);
+	};
+
 	//Submit button
-	const handleClick = async () => {
+	const handleClick = () => {
 		let axiosConfig = {
 			headers: {
 				'Content-Type': 'application/json',
@@ -96,7 +101,7 @@ const MedDelivery = () => {
 			time: timeState,
 			medication_name: typeState,
 			medication_quantity: quantityRef.current.value,
-			medication_date: dateRef.current.value,
+			date: String(date).slice(0, 15),
 		};
 
 		axios.post(`/api/med/create`, postData, axiosConfig).then((response) => {
@@ -109,6 +114,7 @@ const MedDelivery = () => {
 				orderDetails: postData,
 			},
 		});
+		console.log(date);
 	};
 	return (
 		<>
@@ -144,7 +150,6 @@ const MedDelivery = () => {
 			</div>
 
 			<div className='medContainer'>
-				
 				<div className='medWrapper'>
 					<div className='medType'>
 						<div className='Title'>
@@ -180,6 +185,13 @@ const MedDelivery = () => {
 							</form>
 						</div>
 					</div>
+
+					<div className='medQuatity'>
+						<div className='Title'>
+							<h2>Select A Date</h2>
+							<CalendarComponent changeDate={dataChangeHandler} date={date} />
+						</div>
+					</div>
 					<div className='medTime'>
 						<div className='Title'>
 							<h2>Select A Delivery Time</h2>
@@ -202,18 +214,6 @@ const MedDelivery = () => {
 									</div>
 								))}
 							</div>
-						</div>
-					</div>
-					<div className='medQuatity'>
-						<div className='Title'>
-							<h2>Enter A Date</h2>
-							<form>
-								<input
-									ref={dateRef}
-									className='quantityInput'
-									placeholder='Eg: 14 Aug 2022'
-								/>
-							</form>
 						</div>
 					</div>
 					<div className='submitContainer'>
