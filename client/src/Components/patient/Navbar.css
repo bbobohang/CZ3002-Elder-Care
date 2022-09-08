@@ -60,10 +60,31 @@ a:hover {
 	background: var(--primary-green);
 }
 
-.hoverMenu {
-	position: absolute;
-	visibility: hidden;
+.navigation {
+	position: relative;
+	display: inline-block;
 }
-.hoverMe:hover + .hoverMenu {
-	visibility: visible;
+.navigation-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 120px;
+	border-radius: 4px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+.navigation a {
+	color: black;
+	padding: 12px;
+	margin: 0;
+	text-decoration: none;
+	display: block;
+}
+.navigation a:hover {
+	border-radius: 4px;
+	background-color: var(--secondary-green);
+}
+
+.navigation:hover .navigation-content {
+	display: block;
 }

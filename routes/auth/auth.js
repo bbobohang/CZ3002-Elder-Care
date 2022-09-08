@@ -90,17 +90,17 @@ router.post('/login', async (req, res) => {
 // @route POST auth/logout
 // @descr Logout User
 // @access Public
-// router.get('/logout', (req, res) => {
-// 	try {
-// 		res
-// 			.cookie('access_token', { expires: Date.now() })
-// 			.status(200)
-// 			.json('User Logged Out');
-// 	} catch (error) {
-// 		console.log(error.message);
-// 		res.status(500).send('Server Error');
-// 	}
-// });
+router.post('/logout', (req, res) => {
+	try {
+		res.clearCookie('access_token');
+		res.status(200).send('Cookies cleared. User logged out!');
+		res.end();
+	} catch (error) {
+		console.log(error.message);
+		res.status(500).send('Server Error');
+	}
+});
+
 //Checking if the user token is in cookies, return user id
 router.get('/check', verifyToken, (req, res) => {
 	console.log(req.user);

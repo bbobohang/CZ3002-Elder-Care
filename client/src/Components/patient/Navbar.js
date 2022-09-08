@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
-import './Navbar.css';
 import Logo from '../../asset/eldercare.jpg';
 import { CgProfile } from 'react-icons/cg';
+import axios from 'axios';
+
+import './Navbar.css';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
-	let [isOverButton, setIsOverButton] = useState(false);
-	let [isOpen, setIsOpen] = useState('false');
+	const navigate = useNavigate();
+	const logout = () => {
+		axios.post(`/api/auth/logout`).then((response) => {
+			console.log(response);
+		});
+
+		navigate('/login');
+	};
 
 	return (
 		<div className='row'>
@@ -41,13 +50,17 @@ const Navbar = () => {
 							</a>
 						</li>
 						<li className='navItem'>
-							<a className='listItem listIcon hoverMe'>
-								<CgProfile size={25} />
+							<a className='listItem'>
+								<div class='navigation'>
+									<CgProfile size={25} />
+									<div class='navigation-content'>
+										<a href='#'>Profile</a>
+										<a href='#' onClick={logout}>
+											Log Out
+										</a>
+									</div>
+								</div>
 							</a>
-							<div className='hoverMenu'>
-								<p>My Profile</p>
-								<p>Log Out</p>
-							</div>
 						</li>
 					</ul>
 				</div>

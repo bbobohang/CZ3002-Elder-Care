@@ -101,11 +101,11 @@ router.get('/all', async (req, res) => {
 // @role Doctor
 router.get('/id/:id', verifyToken, async (req, res) => {
 	//Check if there is an existing patient record
-	if (req.user.role) {
-		const role = req.user.role;
+	if (!req.user.role) {
+		return res.status(401).json({ errors: { msg: 'Not logged in' } });
 	}
 
-	if (role === 'patient')
+	if (req.user.role === 'patient')
 		return res.status(401).json({ errors: { msg: 'Not authorised' } });
 	const patient_id = req.params.id;
 	try {
