@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const verifyToken = require('../../utils/verifyToken');
+const cookieParser = require('cookie-parser');
 
 // @route POST auth/register
 // @descr Register User to DB
@@ -86,6 +87,20 @@ router.post('/login', async (req, res) => {
 	}
 });
 
+// @route POST auth/logout
+// @descr Logout User
+// @access Public
+// router.get('/logout', (req, res) => {
+// 	try {
+// 		res
+// 			.cookie('access_token', { expires: Date.now() })
+// 			.status(200)
+// 			.json('User Logged Out');
+// 	} catch (error) {
+// 		console.log(error.message);
+// 		res.status(500).send('Server Error');
+// 	}
+// });
 //Checking if the user token is in cookies, return user id
 router.get('/check', verifyToken, (req, res) => {
 	console.log(req.user);

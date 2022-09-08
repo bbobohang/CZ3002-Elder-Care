@@ -56,7 +56,7 @@ const MedConfirmed = () => {
 						</div>
 					</div>
 					<div className='backHomeContainer'>
-						<button className='headerBtn' onClick={() => navigate('/pmed')}>
+						<button className='headerBtn' onClick={() => navigate('/phome')}>
 							BACK TO HOME
 						</button>
 					</div>

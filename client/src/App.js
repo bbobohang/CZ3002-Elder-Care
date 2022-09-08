@@ -12,6 +12,9 @@ import MedDelivery from './Components/patient/MedDelivery';
 import './App.css';
 import MedPreConfirm from './Components/patient/MedPreConfirm';
 import MedConfirmed from './Components/patient/MedConfirmed';
+import MedAccept from './Components/doctor/MedAccept';
+import MedStatus from './Components/patient/MedStatus';
+
 function App() {
 	return (
 		<BrowserRouter>
@@ -33,6 +36,14 @@ function App() {
 				<Route
 					path='pmed/med-booking-confirmed'
 					element={<PrivateRoute component={MedConfirmed} />}
+				/>
+				<Route
+					path='dmed/accept'
+					element={<PrivateRoute component={MedAccept} />}
+				/>
+				<Route
+					path='pmed/status'
+					element={<PrivateRoute component={MedStatus} />}
 				/>
 			</Routes>
 		</BrowserRouter>

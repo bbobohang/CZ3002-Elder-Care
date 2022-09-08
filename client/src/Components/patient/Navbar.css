@@ -42,6 +42,7 @@ a:hover {
 	font-weight: 400;
 	flex-direction: column;
 	align-items: flex-end;
+	cursor: pointer;
 }
 
 .listItem::after {
@@ -59,34 +60,10 @@ a:hover {
 	background: var(--primary-green);
 }
 
-@media screen and (max-width: 800px) {
-	.hamburger {
-		display: block;
-	}
-
-	.nav ul {
-		position: absolute;
-		left: 0;
-		flex-direction: column;
-		width: 100%;
-		border-top: 1px solid white;
-		z-index: 99;
-		padding: 0px;
-		height: 80vh;
-		justify-content: flex-start;
-		background: var(--text-gray-color);
-		display: none;
-	}
-	.navItem {
-		text-align: center;
-		margin: 0;
-	}
-	.listItem {
-		color: black;
-		width: 100%;
-		padding: 1.5rem 0;
-	}
-	.nav.expanded ul {
-		display: block;
-	}
+.hoverMenu {
+	position: absolute;
+	visibility: hidden;
+}
+.hoverMe:hover + .hoverMenu {
+	visibility: visible;
 }
