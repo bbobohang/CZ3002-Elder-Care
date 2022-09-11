@@ -2,6 +2,10 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import Girl from '../asset/signin_girl.png'
+import './Register.css';
 
 const cookies = new Cookies();
 const Register = () => {
@@ -9,6 +13,13 @@ const Register = () => {
 	const [error, setError] = useState({});
 	const refInput = useRef();
 	const navigate = useNavigate();
+	const [showhide, setShowhide]=useState('');
+  
+   const handleshowhide=(event)=>{
+     const getuser = event.target.value;    
+     setShowhide(getuser);
+
+   }
 
 	const handleClick = async () => {
 		try {
@@ -20,6 +31,7 @@ const Register = () => {
 					name: refInput.current[1].value,
 					password: refInput.current[2].value,
 					role: refInput.current[3].value,
+					type: refInput.current[4].value,
 				}),
 			};
 
@@ -47,10 +59,10 @@ const Register = () => {
 					crendentials: true,
 				})
 				.then((response) => {
-					if (response.status == 200) {
+					if (response.status === 200) {
 						cookies.set('access_token', response.data, { path: '/' });
 					}
-					if (response.data.role === 'patient') {
+					if (response.data.role === 'Patient') {
 						navigate('/phome', { replace: true });
 					} else {
 						navigate('/dhome', { replace: true });
@@ -62,22 +74,42 @@ const Register = () => {
 	};
 	return (
 		<>
-			<h1>Register Page</h1>
+			<Navbar />
+			<div className='RegWrapper'>
+				<div className='RegContainer'>
+					<div className='RegInfo'>
+						<b>Sign up for</b>
+						<span class="eldercare"><span>E</span><span>l</span><span>d</span><span>e</span><span>r</span><span>C</span><span>a</span><span>r</span><span>e</span></span>
+						<c>
+							<p>With just a few simple steps.</p>
+							<d>Have an account? Sign in</d>
+							<a href="/login" className="register"> here!</a>
+						</c>	
+					</div>
+					<div className='girl'>
+						<img className='girl' src={Girl} alt='girl'></img>
+					</div>
+					<div className='Register'>
+						<h1>Sign Up</h1>
+						<form ref={refInput}>
+							<input className='form' type='text' name='Email' placeholder='Enter Email'/>
+							<input className='form' type='text' name='Name' placeholder='Full Name'/>
+							<input className='form' type='password' name='Password' placeholder='Password'/>
+							<select className='form-role' onChange={(e)=>(handleshowhide(e))}>
+             					<option value="">--Select User Type--</option>
+             					<option value="doctor">Doctor</option>
+								<option value="patient">Patient</option>
+          					</select>  
+							{showhide==='doctor' && (<input className="form" type='text' name='docType' placeholder='Doctor Type'></input>)}       
+						</form>
 
-			<form ref={refInput}>
-				<h3>Email</h3>
-				<input type='text' name='Email' />
-				<h3>Name</h3>
-				<input type='text' name='Name' />
-				<h3>Password</h3>
-				<input type='password' name='Password' />
-				<h3>Role</h3>
-				<input type='text' name='Role' />
-			</form>
-
-			<button onClick={handleClick}>Register</button>
-			{register.email && <div>{register.name} has been registered! </div>}
-			{register.errors && <div>{register.errors.msg} </div>}
+						<button className='RegisterButton' onClick={handleClick}>Register</button>
+						{register.email && <div>{register.name} has been registered! </div>}
+						{register.errors && <div>{register.errors.msg} </div>}
+					</div>
+				</div>
+			</div>
+			<Footer />
 		</>
 	);
 };
