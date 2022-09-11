@@ -1,0 +1,53 @@
+.footerContainer {
+	display: flex;
+	justify-content: center;
+	background-color: var(--primary-green);
+}
+.footerWrapper {
+	width: 800px;
+	height: 200px;
+	display: flex;
+}
+.footerLeft {
+	display: flex;
+	flex: 3;
+	flex-direction: column;
+	justify-content: center;
+}
+.firstTag {
+	font-weight: normal;
+}
+.footerLeft * {
+	margin: 0px;
+	color: white;
+	margin-bottom: 10px;
+}
+.footerLeft > p {
+	font-size: 10px;
+}
+.footerLeft > h5 {
+	font-style: none;
+	font-weight: normal;
+}
+.footerLeft > span {
+	flex-direction: row;
+	display: flex;
+}
+
+.footerRight {
+	display: flex;
+	flex: 1;
+	justify-content: flex-end;
+	align-items: center;
+}
+.iconWrapper {
+	display: flex;
+	gap: 20px;
+}
+.iconWrapper * {
+	cursor: pointer;
+}
+
+.iconWrapper * :hover {
+	color: var(--secondary-green);
+}

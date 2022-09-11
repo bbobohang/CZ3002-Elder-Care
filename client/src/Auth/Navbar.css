@@ -1,0 +1,30 @@
+.row {
+	display: flex;
+	justify-content: center;
+	height: 80px;
+	align-items: center;
+	background-color: var(--secondary-green);
+}
+.navWrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 1120px;
+}
+
+.navLogo {
+    width: 1120px;
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+.navLogo > img {
+	width: 100px;
+	height: 50px;
+	object-fit: contain;
+}
+
+
