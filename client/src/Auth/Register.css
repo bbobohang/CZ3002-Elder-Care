@@ -1,0 +1,97 @@
+.RegWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.RegContainer {
+	background-color: var(--secondary-green);
+	display: flex;
+	flex-direction: row;
+	width: 1024px;
+	justify-content: center;
+	height: 465px;
+}
+
+.Register,
+.RegInfo {
+	display: flex;
+	flex-direction: column;
+}
+
+.Register {
+	margin-left: auto;
+}
+
+b {
+	font-size: 35px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+
+c {
+	font-size: 15px;
+	font-weight: 550;
+}
+
+.eldercare {
+	font-size: 30px;
+	margin-bottom: 50px;
+	font-weight: 550;
+}
+
+.eldercare span:nth-child(n+6) {
+	color: #00856F;
+	font-weight: 600;
+  }
+
+.girl {
+	height: 450px;
+	object-fit: contain;
+	margin-top: 35px;
+	margin-left: 10px;
+}
+
+.form {
+	background-color: #fff;
+    color: #495057;
+    border-style: solid;
+	border-color: #00856F;
+    border-radius: 8px;
+	padding: 15px 15px;
+	margin: 10px 0px;
+	width: 335px;
+    justify-content: flex-end;
+	display: flex;
+    box-shadow: 0px 4px 20px -10px #000000;
+	outline: none;
+}
+
+.form-role {
+	background-color: #fff;
+    color: #495057;
+    border-style: solid;
+	border-color: #00856F;
+    border-radius: 8px;
+	padding: 15px 15px;
+	margin: 10px 0px;
+	width: 369px;
+    justify-content: flex-end;
+	display: flex;
+    box-shadow: 0px 4px 20px -10px #000000;
+	outline: none;
+}
+
+.RegisterButton {
+    width: 369px;
+	display: flex;
+    justify-content: center;
+	color: #fff;
+	background: #00856F;
+	border: none;
+	border-radius: 8px;
+    padding: 15px 15px;
+    margin: 2px 0px;
+    box-shadow: 0px 4px 80px -10px #545C9B;
+    cursor: pointer;
+}
