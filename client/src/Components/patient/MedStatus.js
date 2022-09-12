@@ -71,7 +71,7 @@ const MedStatus = () => {
 					<div className='statusTitle'>Booking confirmation</div>
 					{med.map((item, index) => (
 						<div className='statusItem'>
-							{item.acceptance === 'false' ? (
+							{item.acceptance === 'pending' ? (
 								<>
 									<div className='statusBanner'>
 										<div className='leftBanner'>

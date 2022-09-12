@@ -29,19 +29,10 @@ const Navbar = () => {
 								Home
 							</a>
 						</li>
-						<li className='navItem'>
-							<a className='listItem' href='#skills'>
-								Book A Service
-							</a>
-						</li>
+
 						<li className='navItem'>
 							<a className='listItem' href='#projects'>
 								Appointments
-							</a>
-						</li>
-						<li className='navItem'>
-							<a className='listItem' href='#experiences'>
-								Wallet
 							</a>
 						</li>
 						<li className='navItem'>
@@ -49,6 +40,12 @@ const Navbar = () => {
 								Med Orders
 							</a>
 						</li>
+						<li className='navItem'>
+							<a className='listItem' href='#experiences'>
+								Wallet
+							</a>
+						</li>
+
 						<li className='navItem'>
 							<a className='listItem'>
 								<div class='navigation'>
