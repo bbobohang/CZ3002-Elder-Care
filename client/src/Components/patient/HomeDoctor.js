@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Navbar from "../../Components/patient/Navbar";
 import Footer from "../../Components/patient/Footer";
 import CalendarComponent from "./CalendarContainer";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 import "./MedDelivery.css";
 import "./PatientHome.css";
@@ -66,11 +69,43 @@ const HomeDoctor = () => {
   const [date, setDate] = useState("");
   const [timeState, setTime] = useState("");
   const [doctorType, setDoctorType] = useState("");
+  const [homeConsultSuccess,setHomeConsultSuccess] = useState(false);
+  const address = useRef();
+
+  const navigate = useNavigate();
 
   const dataChangeHandler = (date) => {
     setDate(date);
   };
 
+  //Submit button
+	const handleClick = () => {
+		let axiosConfig = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+
+		let postData = {
+			time: timeState,
+			doctorType: doctorType,
+			date: String(date).slice(0, 15),
+      address: address.current.value
+		};
+
+		axios.post(`/api/homedoc/create`, postData, axiosConfig).then((response) => {
+			setHomeConsultSuccess(true);
+			console.log(response);
+		});
+
+		navigate('/homeDoctor/preconfirm', {
+			state: {
+				homeConsultDetails: postData,
+			},
+		});
+		console.log(date);
+	};
+  
   return (
     <div>
       <Navbar />
@@ -131,7 +166,7 @@ const HomeDoctor = () => {
             <div className="Title">
               <h2>Enter An Address</h2>
               <form>
-                <input className="quantityInput" placeholder="Eg: Blk 585B, Sengkang East Way, #5-760, S123456" />
+                <input ref = {address} className="quantityInput" placeholder="Eg: Blk 585B, Sengkang East Way, #5-760, S123456" />
               </form>
             </div>
           </div>
@@ -165,15 +200,7 @@ const HomeDoctor = () => {
             </div>
           </div>
           <div className="submitContainer">
-            <button className="headerBtn">Book Now</button>
-          </div>
-          <div>
-            Selected Time:{" "}
-            {date.toLocaleString("en-US", { day: "2-digit" }) +
-              " " +
-              date.toLocaleString("en-US", { month: "long" }) +
-              " " +
-              timeState}
+            <button className="headerBtn" onClick={handleClick}>Book Now</button>
           </div>
         </div>
       </div>
