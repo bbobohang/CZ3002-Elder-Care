@@ -3,11 +3,21 @@ import React from 'react';
 
 import Register from './Auth/Register';
 import Login from './Auth/Login';
+//TeleDoctor
 import TeleDoctor from './Components/patient/TeleDoctor';
+import TeleDoctorPreConfirm from './Components/patient/TeleDoctorPreConfirm';
+import TeleDoctorConfirmed from './Components/patient/TeleDoctorConfirmed';
+//HomeDoctor
 import HomeDoctor from './Components/patient/HomeDoctor';
+import HomeDoctorPreConfirm from './Components/patient/HomeDoctorPreConfirm';
+import HomeDoctorConfirmed from './Components/patient/HomeDoctorConfirmed';
+//PrivateRoute
 import PrivateRoute from './Routes/PrivateRoute';
+//PatientHome
 import PatientHome from './Components/patient/PatientHome';
+//Patient Record
 import PatientRecord from './Components/PatientRecord';
+//MedDelivery and confirmation
 import MedDelivery from './Components/patient/MedDelivery';
 import './App.css';
 import MedPreConfirm from './Components/patient/MedPreConfirm';
@@ -22,8 +32,24 @@ function App() {
 				<Route path='/login' element={<Login />} />
 				<Route path='/register' element={<Register />} />
 				<Route path='phome' element={<PrivateRoute component={PatientHome} />} />
-				<Route path='/teleDoctor' element={<TeleDoctor />} />
-				<Route path='/homeDoctor' element={<HomeDoctor />} />
+				<Route path='/teleDoctor' element={<PrivateRoute component = {TeleDoctor} />} />
+				<Route
+					path='teleDoctor/preconfirm'
+					element={<PrivateRoute component={TeleDoctorPreConfirm} />}
+				/>
+				<Route
+					path='teleDoctor/teleConsultation-booking-confirmed'
+					element={<PrivateRoute component={TeleDoctorConfirmed} />}
+				/>
+				<Route path='/homeDoctor' element={<PrivateRoute component = {HomeDoctor} />} />
+				<Route
+					path='homeDoctor/preconfirm'
+					element={<PrivateRoute component={HomeDoctorPreConfirm} />}
+				/>
+				<Route
+					path='homeDoctor/homeConsultation-booking-confirmed'
+					element={<PrivateRoute component={HomeDoctorConfirmed} />}
+				/>
 				<Route
 					path='precord'
 					element={<PrivateRoute component={PatientRecord} />}

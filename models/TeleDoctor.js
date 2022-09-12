@@ -5,7 +5,10 @@ const TeleDoctorSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	dateTime: {
+	time: {
+		type: String,
+	},
+	date: {
 		type: String,
 	},
 	doctorType: {

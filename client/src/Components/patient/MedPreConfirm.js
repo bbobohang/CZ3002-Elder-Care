@@ -58,6 +58,7 @@ const MedPreConfirm = () => {
 					<div className='preFirstRow'>
 						<div className='preLeft'>
 							<p>Delivery Date</p>
+							<p>Delivery Time</p>
 							<p>Delivery Address</p>
 						</div>
 						<div className='preRight'>

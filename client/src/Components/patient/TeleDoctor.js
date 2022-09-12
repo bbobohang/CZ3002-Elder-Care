@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Navbar from "../../Components/patient/Navbar";
 import Footer from '../../Components/patient/Footer';
 import CalendarComponent from "./CalendarContainer";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import "./MedDelivery.css";
 import "./PatientHome.css";
@@ -66,10 +68,41 @@ const TeleDoctor = () => {
   const [date, setDate] = useState("");
   const [timeState, setTime] = useState("");
   const [doctorType, setDoctorType] = useState("");
+  const [teleConsultSuccess, setTeleConsultSuccess] = useState(false);
+
+  const navigate = useNavigate();
+
 
   const dataChangeHandler = (date) => {
     setDate(date);
   };
+
+  //Submit button
+	const handleClick = () => {
+		let axiosConfig = {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		};
+
+		let postData = {
+			time: timeState,
+			doctorType: doctorType,
+			date: String(date).slice(0, 15),
+		};
+
+		axios.post(`/api/teledoc/create`, postData, axiosConfig).then((response) => {
+			setTeleConsultSuccess(true);
+			console.log(response);
+		});
+
+		navigate('/teleDoctor/preconfirm', {
+			state: {
+				teleConsultDetails: postData,
+			},
+		});
+		console.log(date);
+	};
 
   return (
     <div>
@@ -158,15 +191,7 @@ const TeleDoctor = () => {
             </div>
           </div>
           <div className="submitContainer">
-            <button className="headerBtn">Book Now</button>
-          </div>
-          <div>
-            Selected Time:{" "}
-            {date.toLocaleString("en-US", { day: "2-digit" }) +
-              " " +
-              date.toLocaleString("en-US", { month: "long" }) +
-              " " +
-              timeState}
+            <button className="headerBtn" onClick={handleClick}>Book Now</button>
           </div>
         </div>
       </div>
