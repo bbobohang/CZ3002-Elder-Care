@@ -2,10 +2,11 @@
 	"name": "project",
 	"version": "1.0.0",
 	"description": "",
-	"main": "server.js",
+	"main": "index.js",
 	"scripts": {
 		"start": "node server",
-		"server": "nodemon server"
+		"server": "nodemon server",
+		"heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
 	},
 	"keywords": [],
 	"author": "",
