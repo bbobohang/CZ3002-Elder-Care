@@ -40,7 +40,7 @@ router.post('/accept/:id', verifyToken, async (req, res) => {
 		const filter = { _id: med_id };
 		const updateData = {
 			$set: {
-				acceptance: 'true',
+				acceptance: 'accepted',
 			},
 		};
 		const result = await Medication.updateOne(filter, updateData, options);
@@ -147,7 +147,7 @@ router.get('/count/accepted', verifyToken, async (req, res) => {
 	try {
 		const result = await Medication.count({
 			patient_id: patient_id,
-			acceptance: 'true',
+			acceptance: 'accepted',
 		});
 		if (!result)
 			return res.status(400).json('Patient does not have medicine order');
@@ -168,7 +168,7 @@ router.get('/count/pending', verifyToken, async (req, res) => {
 	try {
 		const result = await Medication.count({
 			patient_id: patient_id,
-			acceptance: { $ne: 'true' },
+			acceptance: { $ne: 'accepted' },
 		});
 		if (!result)
 			return res.status(400).json('Patient does not have medicine order');
