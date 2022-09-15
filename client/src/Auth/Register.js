@@ -23,17 +23,29 @@ const Register = () => {
 
 	const handleClick = async () => {
 		try {
-			const requestOptions = {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
+			var regDetails = {};
+			try{
+				regDetails = {
 					email: refInput.current[0].value,
 					name: refInput.current[1].value,
 					password: refInput.current[2].value,
 					role: refInput.current[3].value,
 					type: refInput.current[4].value,
-				}),
+				}
+			} catch (e) {
+				regDetails = {
+					email: refInput.current[0].value,
+					name: refInput.current[1].value,
+					password: refInput.current[2].value,
+					role: refInput.current[3].value,
+				}
 			};
+
+			const requestOptions = {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(regDetails),
+			};			
 
 			fetch('http://localhost:5000/api/auth/register', requestOptions)
 				.then((response) => response.json())
