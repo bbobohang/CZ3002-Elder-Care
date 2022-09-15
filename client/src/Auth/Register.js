@@ -104,7 +104,7 @@ const Register = () => {
 						<c>
 							<p>With just a few simple steps.</p>
 							<d>Have an account? Sign in</d>
-							<a href='/login' className='register'>
+							<a href='/' className='register'>
 								{' '}
 								here!
 							</a>
