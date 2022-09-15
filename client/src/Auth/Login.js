@@ -15,6 +15,7 @@ const Login = () => {
 	const refPassword = useRef('');
 	const navigate = useNavigate();
 	const [passwordShown, setPasswordShown] = useState(false);
+	const [error,setError]=useState();
 
 	const togglePassword = () => {
 		setPasswordShown(!passwordShown);
@@ -41,6 +42,9 @@ const Login = () => {
 				.then((response) => {
 					if (response.status === 200) {
 						cookies.set('access_token', response.data, { path: '/' });
+					}
+					else {
+						console.log("login error")
 					}
 					if (response.data.role === 'patient') {
 						navigate('/phome', { replace: true });
@@ -83,7 +87,7 @@ const Login = () => {
 						</div>
 						<a href="forget_password_url" className='forgetPass'>Forgot your password?</a>
 						<button className='loginButton' onClick={handleClick}>Log in</button>
-						{error?<div>{error}</div>:null}
+						{error?<div>{error}</div>:null}  
 					</div>
 				</div>
 			</div>
