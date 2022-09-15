@@ -47,7 +47,9 @@ const Login = () => {
 					} else {
 						navigate('/dhome', { replace: true });
 					}
-				});
+				}, reason => {
+					console.error(reason);
+				  	setError('Invalid Username or Password!')});
 		} catch (error) {
 			console.log(error);
 		}
@@ -81,6 +83,7 @@ const Login = () => {
 						</div>
 						<a href="forget_password_url" className='forgetPass'>Forgot your password?</a>
 						<button className='loginButton' onClick={handleClick}>Log in</button>
+						{error?<div>{error}</div>:null}
 					</div>
 				</div>
 			</div>

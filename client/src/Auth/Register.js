@@ -22,6 +22,7 @@ const Register = () => {
 
 	const handleClick = async () => {
 		try {
+
 			console.log('clicked');
 			const axiosConfig = {
 				headers: { 'Content-Type': 'application/json' },
@@ -51,7 +52,6 @@ const Register = () => {
 					navigate('/dhome', { replace: true });
 				}
 			});
-
 			// let axiosConfig = {
 			// 	headers: {
 			// 		'Content-Type': 'application/json',
