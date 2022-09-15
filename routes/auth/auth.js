@@ -20,12 +20,22 @@ router.post('/register', async (req, res) => {
 		}
 
 		//Creating the user object
-		user = new User({
-			name: req.body.name,
-			email: req.body.email,
-			password: req.body.password,
-			role: req.body.role,
-		});
+		if (req.body.doctorType) {
+			user = new User({
+				name: req.body.name,
+				email: req.body.email,
+				password: req.body.password,
+				role: req.body.role,
+				doctorType: req.body.doctorType,
+			});
+		} else {
+			user = new User({
+				name: req.body.name,
+				email: req.body.email,
+				password: req.body.password,
+				role: req.body.role,
+			});
+		}
 
 		const salt = await bcrypt.genSalt(10);
 		const hash = await bcrypt.hash(req.body.password, salt);

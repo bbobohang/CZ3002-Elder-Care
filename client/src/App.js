@@ -24,15 +24,18 @@ import MedPreConfirm from './Components/patient/MedPreConfirm';
 import MedConfirmed from './Components/patient/MedConfirmed';
 import MedAccept from './Components/doctor/MedAccept';
 import MedStatus from './Components/patient/MedStatus';
-
+import DoctorHome from './Components/doctor/DoctorHome';
 function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path='/login' element={<Login />} />
+				<Route path='/' element={<Login />} />
 				<Route path='/register' element={<Register />} />
 				<Route path='phome' element={<PrivateRoute component={PatientHome} />} />
-				<Route path='/teleDoctor' element={<PrivateRoute component = {TeleDoctor} />} />
+				<Route
+					path='/teleDoctor'
+					element={<PrivateRoute component={TeleDoctor} />}
+				/>
 				<Route
 					path='teleDoctor/preconfirm'
 					element={<PrivateRoute component={TeleDoctorPreConfirm} />}
@@ -41,7 +44,10 @@ function App() {
 					path='teleDoctor/teleConsultation-booking-confirmed'
 					element={<PrivateRoute component={TeleDoctorConfirmed} />}
 				/>
-				<Route path='/homeDoctor' element={<PrivateRoute component = {HomeDoctor} />} />
+				<Route
+					path='/homeDoctor'
+					element={<PrivateRoute component={HomeDoctor} />}
+				/>
 				<Route
 					path='homeDoctor/preconfirm'
 					element={<PrivateRoute component={HomeDoctorPreConfirm} />}
@@ -71,6 +77,7 @@ function App() {
 					path='pmed/status'
 					element={<PrivateRoute component={MedStatus} />}
 				/>
+				<Route path='dhome' element={<PrivateRoute component={DoctorHome} />} />
 			</Routes>
 		</BrowserRouter>
 	);
