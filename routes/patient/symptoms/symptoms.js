@@ -3,8 +3,11 @@ const router = express.Router();
 const verifyToken = require('../../../utils/verifyToken');
 const Symptoms = require('../../../models/Symptoms');
 const config = require('config');
-const apiKey = config.get('medicAPIToken');
 const axios = require('axios');
+const http = require('http');
+const getToken = require('../../../utils/getToken');
+const fetch = require('node-fetch');
+
 //To push the data into Mongo. Run once will do
 router.post('/create-sym', async (req, res) => {
 	//Check if there is an existing patient record
@@ -37,16 +40,26 @@ router.get('/all', async (req, res) => {
 });
 
 // @route GET all
-// @descr Get all symptoms
+// @descr Get all symptoms with their chosen symptoms
 // @role Patient
-router.get('/predict', async (req, res) => {
+router.get('/predict', getToken, async (req, res) => {
 	try {
-		axios
-			.get(
-				`https://healthservice.priaid.ch/diagnosis/specialisations?symptoms=[${req.body.symptoms}]&gender=${req.body.gender}&year_of_birth=${req.body.year}&token=${apiKey}&format=json&language=en-gb`
-			)
-			.then((result) => {
-				return res.status(200).json(result);
+		const token = req.body.medicToken;
+		const apiUrl = config.get('priaid_healthservice_url');
+		const symptoms = req.body.symptoms;
+		const gender = req.body.gender;
+		const year = req.body.year;
+
+		fetch(
+			`${apiUrl}/diagnosis/specialisations?symptoms=[${symptoms}]&language=en-gb&format=json&token=${token}&gender=${gender}&year_of_birth=${year}`,
+			{
+				method: 'GET',
+			}
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				res.status(200).json(data);
 			});
 	} catch (error) {
 		console.log(error.message);
