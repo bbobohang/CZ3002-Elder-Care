@@ -25,6 +25,8 @@ import MedConfirmed from './Components/patient/MedConfirmed';
 import MedAccept from './Components/doctor/MedAccept';
 import MedStatus from './Components/patient/MedStatus';
 import DoctorHome from './Components/doctor/DoctorHome';
+
+import SymptomChecker from './Components/patient/SymptomChecker';
 function App() {
 	return (
 		<BrowserRouter>
@@ -78,6 +80,11 @@ function App() {
 					element={<PrivateRoute component={MedStatus} />}
 				/>
 				<Route path='dhome' element={<PrivateRoute component={DoctorHome} />} />
+
+				<Route
+					path='symptoms-checker'
+					element={<PrivateRoute component={SymptomChecker} />}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);

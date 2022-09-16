@@ -27,6 +27,7 @@ app.use(cookieParser());
 app.use('/api/auth', require('./routes/auth/auth'));
 app.use('/api/record', require('./routes/patient/record/record'));
 app.use('/api/med', require('./routes/patient/med/med'));
+app.use('/api/symptoms', require('./routes/patient/symptoms/symptoms'));
 app.use('/api/teledoc', require('./routes/doctor/appointments/teledoc'));
 
 app.listen(PORT, (error) => {
