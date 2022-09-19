@@ -11,6 +11,9 @@ const MedicationSchema = new mongoose.Schema({
 	time: {
 		type: String,
 	},
+	date: {
+		type: String,
+	},
 	medication_name: {
 		type: String,
 	},
@@ -18,8 +21,11 @@ const MedicationSchema = new mongoose.Schema({
 		type: String,
 	},
 	acceptance: {
-		type: Boolean,
-		default: false,
+		type: String,
+		default: 'pending',
+	},
+	rejectedMessage: {
+		type: String,
 	},
 });
 

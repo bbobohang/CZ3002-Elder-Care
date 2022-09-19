@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const verifyToken = require('../../utils/verifyToken');
+const cookieParser = require('cookie-parser');
 
 // @route POST auth/register
 // @descr Register User to DB
@@ -19,12 +20,22 @@ router.post('/register', async (req, res) => {
 		}
 
 		//Creating the user object
-		user = new User({
-			name: req.body.name,
-			email: req.body.email,
-			password: req.body.password,
-			role: req.body.role,
-		});
+		if (req.body.doctorType) {
+			user = new User({
+				name: req.body.name,
+				email: req.body.email,
+				password: req.body.password,
+				role: req.body.role,
+				doctorType: req.body.doctorType,
+			});
+		} else {
+			user = new User({
+				name: req.body.name,
+				email: req.body.email,
+				password: req.body.password,
+				role: req.body.role,
+			});
+		}
 
 		const salt = await bcrypt.genSalt(10);
 		const hash = await bcrypt.hash(req.body.password, salt);
@@ -80,6 +91,20 @@ router.post('/login', async (req, res) => {
 			})
 			.status(200)
 			.json({ ...others });
+	} catch (error) {
+		console.log(error.message);
+		res.status(500).send('Server Error');
+	}
+});
+
+// @route POST auth/logout
+// @descr Logout User
+// @access Public
+router.post('/logout', (req, res) => {
+	try {
+		res.clearCookie('access_token');
+		res.status(200).send('Cookies cleared. User logged out!');
+		res.end();
 	} catch (error) {
 		console.log(error.message);
 		res.status(500).send('Server Error');

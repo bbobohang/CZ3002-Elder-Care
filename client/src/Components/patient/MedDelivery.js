@@ -3,7 +3,8 @@ import './MedDelivery.css';
 import Navbar from '../../Components/patient/Navbar';
 import Footer from '../../Components/patient/Footer';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
+import CalendarComponent from './CalendarContainer';
 const MedType = [
 	{
 		name: 'Allegies',
@@ -79,10 +80,17 @@ const MedDelivery = () => {
 	const [typeState, setType] = useState('');
 	const [timeState, setTime] = useState('');
 	const [medSucess, setMedSucess] = useState(false);
+	const [date, setDate] = useState('');
 	const quantityRef = useRef();
 
+	const navigate = useNavigate();
+
+	const dataChangeHandler = (date) => {
+		setDate(date);
+	};
+
 	//Submit button
-	const handleClick = async () => {
+	const handleClick = () => {
 		let axiosConfig = {
 			headers: {
 				'Content-Type': 'application/json',
@@ -93,12 +101,20 @@ const MedDelivery = () => {
 			time: timeState,
 			medication_name: typeState,
 			medication_quantity: quantityRef.current.value,
+			date: String(date).slice(0, 15),
 		};
 
 		axios.post(`/api/med/create`, postData, axiosConfig).then((response) => {
 			setMedSucess(true);
 			console.log(response);
 		});
+
+		navigate('/pmed/preconfirm', {
+			state: {
+				orderDetails: postData,
+			},
+		});
+		console.log(date);
 	};
 	return (
 		<>
@@ -135,19 +151,6 @@ const MedDelivery = () => {
 
 			<div className='medContainer'>
 				<div className='medWrapper'>
-					<div className={medSucess === true ? 'overlay' : 'overlay hidden'}>
-						<button
-							className='headerBtn'
-							onClick={() => {
-								setMedSucess(!medSucess);
-							}}
-						>
-							openclose
-						</button>
-					</div>
-					<div className={medSucess === true ? 'medPopup' : 'medPopup hidden'}>
-						Medication has been booked!
-					</div>
 					<div className='medType'>
 						<div className='Title'>
 							<h2>Select A Medication Type</h2>
@@ -182,6 +185,13 @@ const MedDelivery = () => {
 							</form>
 						</div>
 					</div>
+
+					<div className='medQuatity'>
+						<div className='Title'>
+							<h2>Select A Date</h2>
+							<CalendarComponent changeDate={dataChangeHandler} date={date} />
+						</div>
+					</div>
 					<div className='medTime'>
 						<div className='Title'>
 							<h2>Select A Delivery Time</h2>
@@ -211,10 +221,9 @@ const MedDelivery = () => {
 							Book Now
 						</button>
 					</div>
-					<div>Selected med: {typeState}</div>
-					<div>Selected Time: {timeState}</div>
 				</div>
 			</div>
+
 			<Footer />
 		</>
 	);

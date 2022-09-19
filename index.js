@@ -2,11 +2,21 @@ const express = require('express');
 const connectDB = require('./config/db');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const path = require('path');
 
 const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 5000;
 
+if (
+	process.env.NODE_ENV === 'production' ||
+	process.env.NODE_ENV === 'staging'
+) {
+	app.use(express.static('client/build'));
+	app.get('*', (req, res) => {
+		res.sendFile(path.join(__dirname + '/client/build/index.html'));
+	});
+}
 //Connecting to mongodb
 connectDB();
 
@@ -15,8 +25,10 @@ app.use(express.json());
 app.use(cookieParser());
 //Define routes
 app.use('/api/auth', require('./routes/auth/auth'));
-app.use('/api/record', require('./routes/record/record'));
-app.use('/api/med', require('./routes/med/med'));
+app.use('/api/record', require('./routes/patient/record/record'));
+app.use('/api/med', require('./routes/patient/med/med'));
+app.use('/api/symptoms', require('./routes/patient/symptoms/symptoms'));
+app.use('/api/teledoc', require('./routes/doctor/appointments/teledoc'));
 
 app.listen(PORT, (error) => {
 	if (!error)

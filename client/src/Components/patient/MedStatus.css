@@ -1,0 +1,86 @@
+.statusContainer {
+	display: flex;
+	justify-content: center;
+	background-color: var(--primary-bg);
+}
+.statusWrapper {
+	width: 1024px;
+	height: auto;
+	margin-top: 60px;
+	display: flex;
+	flex-direction: column;
+}
+.statusFirstRow {
+	display: flex;
+	flex-direction: row;
+	width: 1024px;
+	border-bottom: 1px solid gray;
+	margin-top: 20px;
+	padding-bottom: 20px;
+}
+.statusTitle {
+	margin-top: 40px;
+	font-weight: bold;
+	font-size: 28px;
+	border-left: 4px solid #000;
+	padding-left: 20px;
+	margin-bottom: 40px;
+}
+.statusLeft,
+.statusRight {
+	width: 512px;
+}
+.statusLeft {
+	color: gray;
+}
+
+.statusRight {
+	font-weight: bold;
+}
+.statusLeft > p,
+.statusRight > p {
+	margin: 10px;
+}
+.statusBanner {
+	height: 120px;
+	width: 1024px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+}
+.statusBanner {
+	width: 1024px;
+	height: 120px;
+	background-color: var(--secondary-green);
+	display: flex;
+	flex-direction: row;
+}
+.leftBanner,
+.rightBanner {
+	display: flex;
+}
+
+.rightBanner {
+	flex: 5;
+	flex-direction: column;
+	padding: 10px;
+	justify-content: center;
+}
+
+.rightBanner > h2,
+.rightBanner > p {
+	margin: 0px;
+}
+.leftBanner {
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+}
+.leftBanner > svg {
+	border-radius: 100px;
+	padding: 5px;
+}
+.statusItem {
+	border-bottom: 4px solid black;
+	margin-bottom: 40px;
+}

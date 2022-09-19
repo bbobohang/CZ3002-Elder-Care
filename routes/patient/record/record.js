@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Record = require('../../models/PatientRecord');
-const verifyToken = require('../../utils/verifyToken');
+const Record = require('../../../models/PatientRecord');
+const verifyToken = require('../../../utils/verifyToken');
 
 // @route GET record/all
 // @descr Get all patients records

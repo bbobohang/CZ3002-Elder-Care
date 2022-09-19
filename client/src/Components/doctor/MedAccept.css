@@ -1,0 +1,95 @@
+.cardContainer {
+	display: flex;
+	justify-content: center;
+	background-color: var(--primary-bg);
+}
+
+.cardWrapper {
+	width: 1024px;
+	height: auto;
+	margin-top: 60px;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+	position: relative;
+}
+.card,
+.cardItemTitleWrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border-bottom: 1px solid gray;
+	align-items: center;
+}
+.cardItemWrapper {
+	border: 1px solid gray;
+	padding: 20px;
+	border-radius: 20px;
+	padding-top: 30px;
+}
+.popup {
+	position: absolute;
+	bottom: 50px;
+	right: 120px;
+	width: 800px;
+	height: 300px;
+	background-color: lightgray;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+.cancelIcon {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+.cancelTitle {
+	position: absolute;
+	top: 80px;
+	font-size: 32px;
+	right: 250px;
+}
+.popup.hidden {
+	visibility: hidden;
+}
+.cardItem,
+.cardItemTitle {
+	width: 200px;
+}
+.cardItem {
+	padding: 10px;
+	display: flex;
+	gap: 15px;
+}
+.acceptBtn,
+.rejectBtn {
+	width: 80px;
+	height: 30px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	border-radius: 100px;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	box-shadow: var(--box_shadow);
+}
+.acceptBtn {
+	background-color: var(--primary-green);
+}
+.rejectBtn {
+	border: 1px solid gray;
+}
+.cardFilter {
+	display: flex;
+	justify-content: flex-end;
+	width: 950px;
+}
+.navigation a {
+	color: black;
+	padding: 12px;
+	margin: 0;
+	text-decoration: none;
+	display: block;
+}

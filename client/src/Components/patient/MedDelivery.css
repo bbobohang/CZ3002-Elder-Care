@@ -20,36 +20,10 @@
 }
 .medWrapper {
 	width: 1024px;
-	height: 1024px;
+	height: 1450px;
 	margin-top: 60px;
 }
-.overlay {
-	width: 100vw;
-	height: 100vh;
-	background-color: gray;
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	opacity: 0.5;
-}
-.medPopup {
-	position: fixed;
-	height: 400px;
-	width: 800px;
-	background-color: gray;
-	top: 20%;
-	left: 20%;
-	opacity: 1;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.medPopup.hidden,
-.overlay.hidden {
-	visibility: hidden;
-}
+
 .Title > h2 {
 	padding-left: 20px;
 	border-left: 3px solid #000;
