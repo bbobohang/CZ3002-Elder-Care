@@ -19,7 +19,7 @@ import PatientHome from './Components/patient/PatientHome';
 //Profile
 import Profile from './Components/patient/Profile';
 //Patient Record
-import PatientRecord from './Components/PatientRecord';
+import NotAuth from './Components/NotAuth';
 
 //MedDelivery and confirmation
 import MedDelivery from './Components/patient/MedDelivery';
@@ -30,6 +30,7 @@ import MedAccept from './Components/doctor/MedAccept';
 import MedStatus from './Components/patient/MedStatus';
 import DoctorHome from './Components/doctor/DoctorHome';
 import SymptomChecker from './Components/patient/SymptomChecker';
+import ProfileConfirmed from './Components/patient/ProfileConfirmed';
 
 function App() {
 	return (
@@ -37,58 +38,71 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Login />} />
 				<Route path='/register' element={<Register />} />
-				<Route path='phome' element={<PrivateRoute component={PatientHome} />} />
+				<Route
+					path='phome'
+					element={<PrivateRoute component={PatientHome} role={'patient'} />}
+				/>
 				<Route
 					path='/teleDoctor'
-					element={<PrivateRoute component={TeleDoctor} />}
+					element={<PrivateRoute component={TeleDoctor} role={'patient'} />}
 				/>
 				<Route
 					path='teleDoctor/preconfirm'
-					element={<PrivateRoute component={TeleDoctorPreConfirm} />}
+					element={
+						<PrivateRoute component={TeleDoctorPreConfirm} role={'patient'} />
+					}
 				/>
 				<Route
 					path='teleDoctor/teleConsultation-booking-confirmed'
-					element={<PrivateRoute component={TeleDoctorConfirmed} />}
+					element={<PrivateRoute component={TeleDoctorConfirmed} role={'patient'} />}
 				/>
 				<Route
 					path='/homeDoctor'
-					element={<PrivateRoute component={HomeDoctor} />}
+					element={<PrivateRoute component={HomeDoctor} role={'doctor'} />}
 				/>
 				<Route
 					path='homeDoctor/preconfirm'
-					element={<PrivateRoute component={HomeDoctorPreConfirm} />}
+					element={
+						<PrivateRoute component={HomeDoctorPreConfirm} role={'patient'} />
+					}
 				/>
 				<Route
 					path='homeDoctor/homeConsultation-booking-confirmed'
-					element={<PrivateRoute component={HomeDoctorConfirmed} />}
+					element={<PrivateRoute component={HomeDoctorConfirmed} role={'patient'} />}
 				/>
+				<Route path='401' element={<PrivateRoute component={NotAuth} />} />
 				<Route
-					path='precord'
-					element={<PrivateRoute component={PatientRecord} />}
+					path='pmed'
+					element={<PrivateRoute component={MedDelivery} role={'patient'} />}
 				/>
-
-				<Route path='pmed' element={<PrivateRoute component={MedDelivery} />} />
 				<Route
 					path='pmed/preconfirm'
-					element={<PrivateRoute component={MedPreConfirm} />}
+					element={<PrivateRoute component={MedPreConfirm} role={'patient'} />}
 				/>
 				<Route
 					path='pmed/med-booking-confirmed'
-					element={<PrivateRoute component={MedConfirmed} />}
+					element={<PrivateRoute component={MedConfirmed} role={'patient'} />}
 				/>
 				<Route
 					path='dmed/accept'
-					element={<PrivateRoute component={MedAccept} />}
+					element={<PrivateRoute component={MedAccept} role={'doctor'} />}
 				/>
 				<Route
 					path='pmed/status'
-					element={<PrivateRoute component={MedStatus} />}
+					element={<PrivateRoute component={MedStatus} role={'patient'} />}
 				/>
-
-				<Route path='profile' element={<PrivateRoute component={Profile} />} />
-
-				<Route path='dhome' element={<PrivateRoute component={DoctorHome} />} />
-
+				<Route
+					path='profile'
+					element={<PrivateRoute component={Profile} role={'patient'} />}
+				/>
+				<Route
+					path='profile/confirmation'
+					element={<PrivateRoute component={ProfileConfirmed} role={'patient'} />}
+				/>
+				<Route
+					path='dhome'
+					element={<PrivateRoute component={DoctorHome} role={'doctor'} />}
+				/>
 				<Route
 					path='symptoms-checker'
 					element={<PrivateRoute component={SymptomChecker} />}

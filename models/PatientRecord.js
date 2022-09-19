@@ -5,13 +5,25 @@ const RecordSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	age: {
+	name: {
 		type: String,
 	},
-	heart_rate: {
+	title: {
 		type: String,
 	},
-	blood_pressure: {
+	country: {
+		type: String,
+	},
+	address: {
+		type: String,
+	},
+	block_no: {
+		type: String,
+	},
+	psotal_code: {
+		type: String,
+	},
+	medical_conditions: {
 		type: String,
 	},
 });

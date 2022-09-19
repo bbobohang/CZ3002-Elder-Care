@@ -27,6 +27,9 @@ const MedicationSchema = new mongoose.Schema({
 	rejectedMessage: {
 		type: String,
 	},
+	price: {
+		type: String,
+	},
 });
 
 module.exports = mongoose.model('medications', MedicationSchema);

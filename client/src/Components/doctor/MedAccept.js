@@ -56,6 +56,7 @@ const MedAccept = () => {
 			.then((response) => {
 				console.log(response);
 				setUpdate(!update);
+				setPopup(!popup);
 			});
 	};
 
@@ -88,7 +89,7 @@ const MedAccept = () => {
 	};
 	return (
 		<>
-			<Navbar />
+			<Navbar role={'doctor'} />
 			<div className='headerWrapper'>
 				<div className='headerContainer'>
 					<div className='headerLeft'>
@@ -101,7 +102,7 @@ const MedAccept = () => {
 							{username.role}
 							<br /> {username.email}
 						</p>
-						<button className='headerBtn'>ORDER MEDICINE</button>
+						<button className='headerBtn'>ACCEPT MEDICINE</button>
 					</div>
 					<div className='headerRight headerMed'></div>
 					<div className='headerBanner'>
@@ -123,22 +124,29 @@ const MedAccept = () => {
 					<div className='Title'>
 						<h2>View All Pending Medicine Requests</h2>
 					</div>
-					<div className={popup === true ? 'popup' : 'popup hidden'}>
-						<form>
-							<div className='cancelTitle'>Reason for Rejection</div>
-							<input ref={inputRef} />
-						</form>
-						<button onClick={handleReject}>Ok</button>
-						<div
-							className='cancelIcon'
-							onClick={() => {
-								setPopup(!popup);
-							}}
-						>
-							<ImCancelCircle size={20} />
-						</div>
-					</div>
+
 					<div className='cardItemWrapper'>
+						<div className={popup === true ? 'popup' : 'popup hidden'}>
+							<div className='formWrapper'>
+								<form>
+									<div className='cancelTitle'>
+										Please enter the reason for rejection
+									</div>
+									<input className='reasonbar' ref={inputRef} type='text' />
+								</form>
+								<button className='headerBtn' onClick={handleReject}>
+									Submit
+								</button>
+							</div>
+							<div
+								className='cancelIcon'
+								onClick={() => {
+									setPopup(!popup);
+								}}
+							>
+								<ImCancelCircle size={20} />
+							</div>
+						</div>
 						<div className='cardFilter'>
 							<div class='navigation'>
 								<FaFilter size={25} />

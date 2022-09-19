@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import { BsThreeDots, BsFillCheckCircleFill } from 'react-icons/bs';
-import { ImCross } from 'react-icons/im';
+import { ImCross, ImTelegram } from 'react-icons/im';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,6 +13,8 @@ const MedStatus = () => {
 	const navigate = useNavigate();
 	const [accepted, setAccepted] = useState('3');
 	const [pending, setPending] = useState('3');
+	const [additionalInfo, setAdditionalInfo] = useState({});
+
 	useEffect(() => {
 		axios.get(`/api/med/current`).then((response) => {
 			setMed(response.data);
@@ -24,6 +26,10 @@ const MedStatus = () => {
 		});
 		axios.get(`/api/med/count/pending`).then((response) => {
 			setPending(response.data);
+			console.log(response.data);
+		});
+		axios.get(`/api/record/current`).then((response) => {
+			setAdditionalInfo(response.data);
 			console.log(response.data);
 		});
 	}, []);
@@ -128,7 +134,7 @@ const MedStatus = () => {
 								<div className='statusRight'>
 									<p>{item.date}</p>
 									<p>{item.time}</p>
-									<p>1223 abc road, #01-01, S123456</p>
+									<p>{`${additionalInfo.address} ${additionalInfo.block_no}`}</p>
 								</div>
 							</div>
 							<div className='statusFirstRow'>
@@ -141,7 +147,7 @@ const MedStatus = () => {
 								<div className='statusRight'>
 									<p>{item.medication_name}</p>
 									<p>{item.medication_quantity}</p>
-									<p>$20</p>
+									<p>{`$${item.price}`}</p>
 								</div>
 							</div>
 						</div>
