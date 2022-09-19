@@ -60,6 +60,7 @@ router.get('/current', verifyToken, async (req, res) => {
 // @descr Create/Update patient's record to DB
 router.post('/update', verifyToken, async (req, res) => {
 	const user_id = req.user.id;
+	const user_name = req.user.name;
 
 	//Check if there is an existing patient record
 	try {
@@ -67,9 +68,11 @@ router.post('/update', verifyToken, async (req, res) => {
 		const filter = { patient_id: user_id };
 		const updateData = {
 			$set: {
-				age: req.body.age,
-				blood_pressure: req.body.blood_pressure,
-				heart_rate: req.body.heart_rate,
+				name: user_name,
+				medical_conditions: req.body.medical_conditions,
+				address: req.body.address,
+				block_no: req.body.block_no,
+				postal_code: req.body.postal_code,
 			},
 		};
 		const result = await Record.updateOne(filter, updateData, options);

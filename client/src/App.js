@@ -30,6 +30,7 @@ import MedAccept from './Components/doctor/MedAccept';
 import MedStatus from './Components/patient/MedStatus';
 import DoctorHome from './Components/doctor/DoctorHome';
 import SymptomChecker from './Components/patient/SymptomChecker';
+import ProfileConfirmed from './Components/patient/ProfileConfirmed';
 
 function App() {
 	return (
@@ -93,6 +94,10 @@ function App() {
 				<Route
 					path='profile'
 					element={<PrivateRoute component={Profile} role={'patient'} />}
+				/>
+				<Route
+					path='profile/confirmation'
+					element={<PrivateRoute component={ProfileConfirmed} role={'patient'} />}
 				/>
 				<Route
 					path='dhome'
