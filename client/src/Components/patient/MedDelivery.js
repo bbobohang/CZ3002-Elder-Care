@@ -8,33 +8,43 @@ import CalendarComponent from './CalendarContainer';
 const MedType = [
 	{
 		name: 'Allegies',
+		price: 15,
 	},
 	{
 		name: 'Asthma',
+		price: 20,
 	},
 	{
 		name: 'Birth Control',
+		price: 10,
 	},
 	{
 		name: 'Blood Pressure',
+		price: 31,
 	},
 	{
 		name: 'Heart Disease',
+		price: 41,
 	},
 	{
 		name: 'Cold & Flu',
+		price: 32,
 	},
 	{
 		name: 'Diabetes',
+		price: 44,
 	},
 	{
 		name: 'Fever',
+		price: 23,
 	},
 	{
 		name: 'Headaches',
+		price: 41,
 	},
 	{
 		name: 'Cholesterol',
+		price: 31,
 	},
 ];
 
@@ -77,7 +87,7 @@ const DeliverTime = [
 	},
 ];
 const MedDelivery = () => {
-	const [typeState, setType] = useState('');
+	const [typeState, setType] = useState({});
 	const [timeState, setTime] = useState('');
 	const [medSucess, setMedSucess] = useState(false);
 	const [date, setDate] = useState('');
@@ -99,9 +109,10 @@ const MedDelivery = () => {
 
 		let postData = {
 			time: timeState,
-			medication_name: typeState,
+			medication_name: typeState.name,
 			medication_quantity: quantityRef.current.value,
 			date: String(date).slice(0, 15),
+			price: typeState.price * parseInt(quantityRef.current.value.split(' ')[0]),
 		};
 
 		axios.post(`/api/med/create`, postData, axiosConfig).then((response) => {
@@ -158,13 +169,14 @@ const MedDelivery = () => {
 								{MedType.map((item, index) => (
 									<div
 										className={
-											'medTypeCard' + (typeState === `${item.name}` ? 'selectedType' : '')
+											'medTypeCard' +
+											(typeState.name === `${item.name}` ? 'selectedType' : '')
 										}
 										key={index}
 										id={item.name}
 										onClick={(e) => {
 											e.preventDefault();
-											setType(e.target.id);
+											setType(item);
 										}}
 									>
 										{item.name}

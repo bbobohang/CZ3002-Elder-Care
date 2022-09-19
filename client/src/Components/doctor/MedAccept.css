@@ -98,6 +98,7 @@
 }
 .acceptBtn {
 	background-color: var(--primary-green);
+	color: white;
 }
 .rejectBtn {
 	border: 1px solid gray;

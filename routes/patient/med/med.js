@@ -16,6 +16,7 @@ router.post('/create', verifyToken, async (req, res) => {
 			medication_quantity: req.body.medication_quantity,
 			patient_name: req.user.name,
 			date: req.body.date,
+			price: req.body.price,
 		};
 		const result = await Medication.insertMany(data);
 		return res.status(200).json(result);
