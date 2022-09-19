@@ -1,0 +1,72 @@
+.profileWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.profileContainer {
+	background-color: var(--secondary-green);
+	flex-direction: row;
+	width: 1024px;
+	justify-content: center;
+	margin-top: 80px;
+}
+
+
+.inputList {
+	width: 1024px;
+	display: flex;
+	flex-direction: row;
+}
+
+.inputItem{
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20px;
+}
+
+.inputItemLeft{
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+.inputItemRight{
+	margin-left: auto;
+	margin-top: 20px;
+}
+
+.form{
+	width: 280px;
+	box-shadow: none;
+}
+
+.formDropdown{
+	background-color: #fff;
+    color: #495057;
+    border-style: solid;
+	border-color: #00856F;
+    border-radius: 8px;
+	padding: 5px;
+	margin: 10px 0px;
+	width: 312px;
+	display: flex;
+	height: 50px;
+}
+
+.save {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.saveButton {
+	width: 200px;
+	display: flex;
+    justify-content: center;
+	color: #fff;
+	background: #00856F;
+	border: none;
+	border-radius: 8px;
+    padding: 15px 15px;
+    margin: 20px 0px;
+    cursor: pointer;
+}

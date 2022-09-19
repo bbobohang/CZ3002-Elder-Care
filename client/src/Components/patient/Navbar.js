@@ -51,7 +51,7 @@ const Navbar = () => {
 								<div class='navigation'>
 									<CgProfile size={25} />
 									<div class='navigation-content'>
-										<a href='#'>Profile</a>
+										<a href='/profile'>Profile</a>
 										<a href='#' onClick={logout}>
 											Log Out
 										</a>
