@@ -11,16 +11,6 @@ const getToken = async (req, res, next) => {
 		var computedHash = CryptoJS.HmacMD5(authUrl, password);
 		var computedHashString = computedHash.toString(CryptoJS.enc.Base64);
 
-		// axios
-		// 	.post(authUrl, {
-		// 		headers: {
-		// 			Authorization: authorization,
-		// 		},
-		// 	})
-		// 	.then((response) => {
-		// 		console.log(response);
-		// 	})
-		// 	.catch(next);
 		fetch(authUrl, {
 			method: 'POST',
 			headers: {
