@@ -1,9 +1,0 @@
-{
-	"mongoURI": "mongodb+srv://ASE9AMCLASS:ASE9amClass@cluster9am.di4mufr.mongodb.net/?retryWrites=true&w=majority",
-	"jwtSecret": "mysecrettoken",
-	"medicApiUsername": "Xt92R_GMAIL_COM_AUT",
-	"medicApiPassword": "e7ZSo65WjKc98Ttk3",
-	"priaid_authservice_url": "https://authservice.priaid.ch/login",
-	"priaid_healthservice_url": "https://healthservice.priaid.ch",
-	"language": "en-gb"
-}
