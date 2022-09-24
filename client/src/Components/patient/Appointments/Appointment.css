@@ -1,0 +1,9 @@
+.AppointmentCalendar {
+  max-width: 1024px;
+  margin: auto;
+  margin-top: 20px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 3px;
+  justify-content: center;
+}
