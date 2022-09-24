@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import './PatientHome.css';
 import TeleLogo from '../../asset/tele_consult.png';
@@ -40,6 +40,7 @@ const Data = [
 	},
 ];
 const PatientHome = () => {
+	const navigate = useNavigate();
 	return (
 		<>
 			<Navbar />
@@ -54,7 +55,7 @@ const PatientHome = () => {
 							the best possible healthcare for kids of all ages and adults of all
 							conditions.
 						</p>
-						<button className='headerBtn'>View Your Appointments</button>
+						<button className='headerBtn' onClick={() => navigate('/patient/appointment')}>View Your Appointments</button>
 					</div>
 					<div className='headerRight'></div>
 					<div className='headerBanner'>

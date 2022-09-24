@@ -77,7 +77,7 @@ const Navbar = ({ role }) => {
 							</li>
 
 							<li className='navItem'>
-								<a className='listItem' href='#projects'>
+								<a className='listItem' href='/patient/appointment'>
 									Appointments
 								</a>
 							</li>

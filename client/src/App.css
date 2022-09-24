@@ -1,14 +1,14 @@
 :root {
-	--primary-green: #00856f;
-	--secondary-green: #dce9e2;
-	--primary-nude: #fffaf1;
-	--primary-bg: #f7f9f9;
-	--box_shadow: 0 3px 20px rgb(0 0 0 / 0.2);
-	--primary-gray: #f3f2f5;
+  --primary-green: #00856f;
+  --secondary-green: #dce9e2;
+  --primary-nude: #fffaf1;
+  --primary-bg: #f7f9f9;
+  --box_shadow: 0 3px 20px rgb(0 0 0 / 0.2);
+  --primary-gray: #f3f2f5;
 }
 
 body {
-	margin: 0px;
-	padding: 0px;
-	background-color: #dce9e2;
+  margin: 0px;
+  padding: 0px;
+  background-color: #dce9e2;
 }

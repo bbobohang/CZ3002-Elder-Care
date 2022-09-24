@@ -1,6 +1,6 @@
 import Calendar from 'react-calendar';
 import styled from 'styled-components';
-import "./CalendarDiv.css";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 import React from 'react';
 
 const CalendarComponent = (props) =>{
