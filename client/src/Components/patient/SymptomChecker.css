@@ -1,0 +1,31 @@
+.symptomWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    background-color: var(--primary-bg);
+}
+
+.symptomContainer {
+	flex-direction: row;
+	width: 1024px;
+	justify-content: center;
+	margin-top: 80px;
+}
+
+.next {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.nextButton {
+	width: 200px;
+	display: flex;
+    justify-content: center;
+	color: #fff;
+	background: #00856F;
+	border: none;
+	border-radius: 8px;
+    padding: 15px 15px;
+    margin: 20px 0px;
+    cursor: pointer;
+}
