@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const verifyToken = require('../../../utils/verifyToken');
 const Symptoms = require('../../../models/Symptoms');
-const config = require('config');
-const axios = require('axios');
-const http = require('http');
 const getToken = require('../../../utils/getToken');
 const fetch = require('node-fetch');
 
@@ -45,7 +41,7 @@ router.get('/all', async (req, res) => {
 router.get('/predict', getToken, async (req, res) => {
 	try {
 		const token = req.body.medicToken;
-		const apiUrl = config.get('priaid_healthservice_url');
+		const apiUrl = process.env.priaid_healthservice_url;
 		const symptoms = req.body.symptoms;
 		const gender = req.body.gender;
 		const year = req.body.year;

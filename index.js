@@ -3,6 +3,7 @@ const connectDB = require('./config/db');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
 app.use(cors());
@@ -29,6 +30,7 @@ app.use('/api/record', require('./routes/patient/record/record'));
 app.use('/api/med', require('./routes/patient/med/med'));
 app.use('/api/symptoms', require('./routes/patient/symptoms/symptoms'));
 app.use('/api/teledoc', require('./routes/doctor/appointments/teledoc'));
+app.use('/api/appt', require('./routes/patient/appointments/appointments'));
 
 app.listen(PORT, (error) => {
 	if (!error)

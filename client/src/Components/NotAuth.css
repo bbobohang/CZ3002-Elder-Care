@@ -1,0 +1,32 @@
+.notAuthContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.notAuthWrapper {
+	display: flex;
+	height: 400px;
+	width: 1024px;
+	flex-direction: column;
+}
+.leftNotAuth {
+	flex: 2;
+	font-size: 200px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+.leftNotAuth > p,
+.leftNotAuth > p {
+	margin: 0px;
+}
+.rightNotAuth {
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	font-size: 32px;
+	font-weight: 600;
+}

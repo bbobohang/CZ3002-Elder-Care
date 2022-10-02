@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require('../../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
 const verifyToken = require('../../utils/verifyToken');
 const cookieParser = require('cookie-parser');
 
@@ -46,7 +45,7 @@ router.post('/register', async (req, res) => {
 		console.log('User registered');
 
 		//Storing JWT in cookies to authenticate user
-		const token = jwt.sign({ id: user._id }, config.get('jwtSecret'));
+		const token = jwt.sign({ id: user._id }, process.env.jwtSecret);
 		const { password, ...others } = user._doc;
 		res
 			.cookie('access_token', token, {
@@ -80,7 +79,7 @@ router.post('/login', async (req, res) => {
 		//Maybe should not store the email in the token
 		const token = jwt.sign(
 			{ id: user._id, email: user.email, name: user.name, role: user.role },
-			config.get('jwtSecret')
+			process.env.jwtSecret
 		);
 		const { password, ...others } = user._doc;
 		console.log('User Login');

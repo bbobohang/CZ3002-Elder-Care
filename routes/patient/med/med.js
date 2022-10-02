@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const verifyToken = require('../../../utils/verifyToken');
 const Medication = require('../../../models/Medication');
+const TeleDoctor = require('../../../models/TeleDoctor');
 
 // @route POST med/update
 // @descr Create/Update patients medication's record to DB
@@ -16,6 +17,7 @@ router.post('/create', verifyToken, async (req, res) => {
 			medication_quantity: req.body.medication_quantity,
 			patient_name: req.user.name,
 			date: req.body.date,
+			price: req.body.price,
 		};
 		const result = await Medication.insertMany(data);
 		return res.status(200).json(result);

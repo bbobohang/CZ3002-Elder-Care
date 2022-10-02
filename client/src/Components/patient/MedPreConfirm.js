@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
+import axios from 'axios';
+import Footer from './Footer';
 
 import './MedPreConfirm.css';
-import Footer from './Footer';
 
 const MedPreConfirm = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
-	console.log(location);
+	const [additionalInfo, setAdditionalInfo] = useState({});
+	const [price, setPrice] = useState();
+	useEffect(() => {
+		axios.get(`/api/record/current`).then((response) => {
+			setAdditionalInfo(response.data);
+			console.log(response.data);
+		});
+	}, []);
+
 	return (
 		<>
 			<Navbar />
@@ -64,7 +73,7 @@ const MedPreConfirm = () => {
 						<div className='preRight'>
 							<p>{location.state.orderDetails.date}</p>
 							<p>{location.state.orderDetails.time}</p>
-							<p>1223 abc road, #01-01, S123456</p>
+							<p>{`${additionalInfo.address} ${additionalInfo.block_no}`}</p>
 						</div>
 					</div>
 					<div className='preFirstRow'>
@@ -77,7 +86,7 @@ const MedPreConfirm = () => {
 						<div className='preRight'>
 							<p>{location.state.orderDetails.medication_name}</p>
 							<p>{location.state.orderDetails.medication_quantity}</p>
-							<p>$20</p>
+							<p>{`$${location.state.orderDetails.price}`}</p>
 						</div>
 					</div>
 

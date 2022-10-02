@@ -1,7 +1,12 @@
 import React from 'react';
-
+import Navbar from '../patient/Navbar';
 const DoctorHome = () => {
-	return <div>DoctorHome</div>;
+	return (
+		<>
+			<Navbar role={'doctor'} />
+			<div>DoctorHome</div>
+		</>
+	);
 };
 
 export default DoctorHome;
