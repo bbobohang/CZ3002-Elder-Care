@@ -52,6 +52,7 @@ const SymptomChecker = () => {
 						<h2>| Select your most commonly experienced symptom(s)</h2>
 						<select className='formDropdown' name='symptoms' id='symptoms' multiple>
 							<option value='10'>Abdominal pain</option>
+							
 							<option value=' 238'>
 								Anxiety</option>
 
