@@ -32,11 +32,10 @@ const Data = [
 		link: '/pmed',
 	},
 	{
-		title: 'Home Care and Nursing',
-		subtitle:
-			'You can get urgent care for yourself or your children and your family',
+		title: 'Symptoms Checkor',
+		subtitle: 'Get list of suggested specialisations for calulated diseases',
 		image: HomeCare,
-		link: '/login',
+		link: '/symptoms-checker',
 	},
 ];
 const PatientHome = () => {
@@ -55,7 +54,12 @@ const PatientHome = () => {
 							the best possible healthcare for kids of all ages and adults of all
 							conditions.
 						</p>
-						<button className='headerBtn' onClick={() => navigate('/patient/appointment')}>View Your Appointments</button>
+						<button
+							className='headerBtn'
+							onClick={() => navigate('/patient/appointment')}
+						>
+							View Your Appointments
+						</button>
 					</div>
 					<div className='headerRight'></div>
 					<div className='headerBanner'>
