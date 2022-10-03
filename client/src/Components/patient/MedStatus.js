@@ -122,7 +122,7 @@ const MedStatus = () => {
 								</div>
 								<div className='statusRight'>
 									<p>Medication Delivery</p>
-									<p>{item.patient_name}</p>
+									<p>{additionalInfo.name}</p>
 								</div>
 							</div>
 							<div className='statusFirstRow'>

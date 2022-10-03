@@ -61,7 +61,7 @@ const MedPreConfirm = () => {
 						</div>
 						<div className='preRight'>
 							<p>Medication Delivery</p>
-							<p>Marco Polo</p>
+							<p>{additionalInfo.name}</p>
 						</div>
 					</div>
 					<div className='preFirstRow'>

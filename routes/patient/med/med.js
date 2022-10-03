@@ -130,8 +130,7 @@ router.get('/current', verifyToken, async (req, res) => {
 
 	try {
 		const result = await Medication.find({ patient_id: patient_id });
-		if (!result)
-			return res.status(400).json('Patient does not have medicine order');
+		if (!result) return res.status(200).json(0);
 		return res.status(200).json(result);
 	} catch (error) {
 		console.log(error.message);
@@ -151,8 +150,7 @@ router.get('/count/accepted', verifyToken, async (req, res) => {
 			patient_id: patient_id,
 			acceptance: 'accepted',
 		});
-		if (!result)
-			return res.status(400).json('Patient does not have medicine order');
+		if (!result) return res.status(200).json(0);
 		return res.status(200).json(result);
 	} catch (error) {
 		console.log(error.message);
@@ -172,8 +170,7 @@ router.get('/count/pending', verifyToken, async (req, res) => {
 			patient_id: patient_id,
 			acceptance: { $ne: 'accepted' },
 		});
-		if (!result)
-			return res.status(400).json('Patient does not have medicine order');
+		if (!result) return res.status(200).json(0);
 		return res.status(200).json(result);
 	} catch (error) {
 		console.log(error.message);
