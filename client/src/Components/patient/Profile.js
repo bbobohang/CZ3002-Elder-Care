@@ -3,13 +3,13 @@ import Footer from './Footer';
 import Navbar from './Navbar';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated'
+// import Select from 'react-select';
+// import makeAnimated from 'react-select/animated'
 
 import './Profile.css';
 
 //const conditions = JSON.parse("../Issues.json")
-const animatedComponents = makeAnimated();
+// const animatedComponents = makeAnimated();
 
 const Profile = () => {
 	const [med, setMed] = useState([]);
@@ -17,7 +17,7 @@ const Profile = () => {
 	const navigate = useNavigate();
 	const [accepted, setAccepted] = useState('3');
 	const [pending, setPending] = useState('3');
-	
+
 	useEffect(() => {
 		axios.get(`/api/med/current`).then((response) => {
 			setMed(response.data);
@@ -34,7 +34,7 @@ const Profile = () => {
 	}, []);
 
 	const handleClick = async (e) => {
-		console.log(refInput)
+		console.log(refInput);
 		let axiosConfig = {
 			headers: {
 				'Content-Type': 'application/json',
@@ -42,6 +42,7 @@ const Profile = () => {
 		};
 
 		let postData = {
+			name: refInput.current[0].value + ' ' + refInput.current[1].value,
 			medical_conditions: refInput.current[9].value,
 			address: refInput.current[6].value,
 			block_no: refInput.current[7].value,
@@ -448,209 +449,115 @@ const Profile = () => {
 							<div className='inputList'>
 								<div className='inputItemLeft'>
 									<p>Pre-Existing Medical Conditions (if any)</p>
-									<select className='formDropdown' name='conditions' id='conditions' multiple>
-										<option value='170'>
-										Abortion</option>
-									
-									
-										<option value='509'>
-										Accumulation of fluid in the scrotum</option>
-									
-									
-										<option value='113'>
-										Acute inflammation of lung</option>
-									
-									
-										<option value='495'>
-										Bloated belly</option>
-									
-									
-										<option value='211'>
-										Chronic tiredness syndrome</option>
-									
-									
-										<option value='80'>
-										Cold</option>
-									
-									
-										<option value='53'>
-										Constipation</option>
-									
-									
-										<option value='86'>
-										Coronary heart disease</option>
-									
-									
-										<option value='47'>
-										Depression</option>
-									
-									
-										<option value='266'>
-										Disturbed testicular descent</option>
-									
-									
-										<option value='431'>
-										Drug side effect</option>
-									
-									
-										<option value='237'>
-										Erection problems</option>
-									
-									
-										<option value='181'>
-										Excessive feeling of fear</option>
-									
-									
-										<option value='11'>
-										Flu</option>
-									
-									
-										<option value='281'>
-										Food poisoning</option>
-									
-									
-										<option value='107'>
-										German measles</option>
-									
-									
-										<option value='104'>
-										Headache</option>
-									
-									
-										<option value='87'>
-										Heart attack</option>
-									
-									
-										<option value='434'>
-										Heart racing</option>
-									
-									
-										<option value='130'>
-										Hernia</option>
-									
-									
-										<option value='209'>
-										Huntington's disease</option>
-									
-									
-										<option value='15'>
-										Hypersensitivity reaction</option>
-									
-									
+									<select
+										className='formDropdown'
+										name='conditions'
+										id='conditions'
+										multiple
+									>
+										<option value='170'>Abortion</option>
+
+										<option value='509'>Accumulation of fluid in the scrotum</option>
+
+										<option value='113'>Acute inflammation of lung</option>
+
+										<option value='495'>Bloated belly</option>
+
+										<option value='211'>Chronic tiredness syndrome</option>
+
+										<option value='80'>Cold</option>
+
+										<option value='53'>Constipation</option>
+
+										<option value='86'>Coronary heart disease</option>
+
+										<option value='47'>Depression</option>
+
+										<option value='266'>Disturbed testicular descent</option>
+
+										<option value='431'>Drug side effect</option>
+
+										<option value='237'>Erection problems</option>
+
+										<option value='181'>Excessive feeling of fear</option>
+
+										<option value='11'>Flu</option>
+
+										<option value='281'>Food poisoning</option>
+
+										<option value='107'>German measles</option>
+
+										<option value='104'>Headache</option>
+
+										<option value='87'>Heart attack</option>
+
+										<option value='434'>Heart racing</option>
+
+										<option value='130'>Hernia</option>
+
+										<option value='209'>Huntington's disease</option>
+
+										<option value='15'>Hypersensitivity reaction</option>
+
 										<option value='83'>
-										Inflammation of the brain covering membranes</option>
-									
-									
-										<option value='235'>
-										Inflammation of the epididymis</option>
-									
-									
-										<option value='44'>
-										Inflammation of the nose and throat</option>
-									
-									
-										<option value='504'>
-										Inflammation of the prostate</option>
-									
-									
-										<option value='331'>
-										Inflammation of the testes</option>
-									
-									
-										<option value='131'>
-										Joint infection</option>
-									
-									
-										<option value='324'>
-										Kidney stones</option>
-									
-									
-										<option value='109'>
-										Kissing disease</option>
-									
-									
-										<option value='166'>
-										Listeria infection</option>
-									
-									
-										<option value='51'>
-										Loose watery stools</option>
-									
-									
-										<option value='79'>
-										Lyme disease</option>
-									
-									
-										<option value='357'>
-										Malignant prostate cancer</option>
-									
-									
-										<option value='50'>
-										Menopause</option>
-									
-									
-										<option value='489'>
-										Menstrual cramps</option>
-									
-									
-										<option value='347'>
-										Narrowing of foreskin</option>
-									
-									
-										<option value='167'>
-										Obstruction of a pulmonary artery</option>
-									
-									
-										<option value='446'>
-										Pregnancy</option>
-									
-									
-										<option value='18'>
-										Reflux disease</option>
-									
-									
-										<option value='376'>
-										Scarlet fever</option>
-									
-									
-										<option value='68'>
-										Shaking palsy</option>
-									
-									
-										<option value='67'>
-										Sick headache</option>
-									
-									
-										<option value='103'>
-										Slipped disc</option>
-									
-									
-										<option value='19'>
-										Smoking</option>
-									
-									
-										<option value='510'>
-										Sperm cyst</option>
-									
-									
-										<option value='476'>
-										Stomach bleeding</option>
-									
-									
-										<option value='488'>
-										Strain of the back muscles</option>
-									
-									
-										<option value='151'>
-										Torsion of testes</option>
-									
-									
-										<option value='497'>
-										Tubal and ovarian inflammation</option>
-									
-									
-										<option value='59'>
-										Urinary tract infection</option>
+											Inflammation of the brain covering membranes
+										</option>
+
+										<option value='235'>Inflammation of the epididymis</option>
+
+										<option value='44'>Inflammation of the nose and throat</option>
+
+										<option value='504'>Inflammation of the prostate</option>
+
+										<option value='331'>Inflammation of the testes</option>
+
+										<option value='131'>Joint infection</option>
+
+										<option value='324'>Kidney stones</option>
+
+										<option value='109'>Kissing disease</option>
+
+										<option value='166'>Listeria infection</option>
+
+										<option value='51'>Loose watery stools</option>
+
+										<option value='79'>Lyme disease</option>
+
+										<option value='357'>Malignant prostate cancer</option>
+
+										<option value='50'>Menopause</option>
+
+										<option value='489'>Menstrual cramps</option>
+
+										<option value='347'>Narrowing of foreskin</option>
+
+										<option value='167'>Obstruction of a pulmonary artery</option>
+
+										<option value='446'>Pregnancy</option>
+
+										<option value='18'>Reflux disease</option>
+
+										<option value='376'>Scarlet fever</option>
+
+										<option value='68'>Shaking palsy</option>
+
+										<option value='67'>Sick headache</option>
+
+										<option value='103'>Slipped disc</option>
+
+										<option value='19'>Smoking</option>
+
+										<option value='510'>Sperm cyst</option>
+
+										<option value='476'>Stomach bleeding</option>
+
+										<option value='488'>Strain of the back muscles</option>
+
+										<option value='151'>Torsion of testes</option>
+
+										<option value='497'>Tubal and ovarian inflammation</option>
+
+										<option value='59'>Urinary tract infection</option>
 									</select>
 								</div>
 							</div>

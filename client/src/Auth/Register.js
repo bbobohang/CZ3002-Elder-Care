@@ -22,7 +22,6 @@ const Register = () => {
 
 	const handleClick = async () => {
 		try {
-
 			console.log('clicked');
 			const axiosConfig = {
 				headers: { 'Content-Type': 'application/json' },
