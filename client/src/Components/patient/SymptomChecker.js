@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState, useRef } from 'react';
+import {useNavigate} from 'react-router-dom';
 import Navbar from '../../Components/patient/Navbar';
 import Footer from '../../Components/patient/Footer';
 
@@ -7,6 +8,13 @@ import './SymptomChecker.css';
 
 const SymptomChecker = () => {
 	//Getting medicAPI
+	const navigate = useNavigate();
+	const refInput = useRef();
+	const birthRef = useRef();
+	const [symptoms, setSymptoms] = useState([]);
+	const [gender, setGender] = useState('');
+	const [age, setAge] = useState('');
+
 	const handleClick = async () => {
 		// axios.get().then((response) => {
 		// 	console.log(response);
@@ -27,20 +35,27 @@ const SymptomChecker = () => {
 			.post(`/api/symptoms/predict`, postData, axiosConfig)
 			.then((response) => {
 				console.log(response);
+
+				/*
+				if(symptoms === [] || gender === ''){
+					console.log("Error")
+				}
+				else{
+					navigate('/recommendations',{state:{results: response.data}});
+				}
+				*/
+				navigate('/recommendations',{state:{results: response.data}});
+
 			})
 			.catch(function(error) {
 				console.log(error);
 			});
+
 		// console.log(String(symptoms));
 		// console.log(String(gender));
 		// console.log(String(birthRef.current.value));
 	};
 
-	const refInput = useRef();
-	const birthRef = useRef();
-	const [symptoms, setSymptoms] = useState([]);
-	const [gender, setGender] = useState('male');
-	const [age, setAge] = useState('1987');
 	const onOptionChangeHandler = (event) => {
 		var option = event.target.options;
 		var values = [];
@@ -104,6 +119,9 @@ const SymptomChecker = () => {
 							id='symptoms'
 							multiple
 							onChange={onOptionChangeHandler}
+
+							style={{"height" : "200px"}}
+
 						>
 							<option value='10'>Abdominal pain</option>
 

@@ -62,21 +62,15 @@ const Profile = () => {
 				<div className='headerContainer'>
 					<div className='headerLeft'>
 						<h1>
-							Medicine Delivery <br />
-							to your Doorstep
+							<div style={{color: "#00856F"}}>Welcome,</div>
+							Mr Marco Polo
 						</h1>
 						<p>
-							Order medications online and have them delivered straight to your
-							doorstep.
-							<br /> Same-day delivery, island wide.
+							marcopolo0001@gmail.com
+							<br /> +65 1234 5678 
 						</p>
-						<button
-							className='headerBtn'
-							onClick={() => {
-								navigate('/pmed');
-							}}
-						>
-							ORDER MEDICINE
+						<button className='headerBtn'>
+							MANAGE PERSONAL INFO
 						</button>
 					</div>
 					<div className='headerRight headerMed'></div>
@@ -454,6 +448,9 @@ const Profile = () => {
 										name='conditions'
 										id='conditions'
 										multiple
+
+										style={{"height" : "100%"}}
+
 									>
 										<option value='170'>Abortion</option>
 

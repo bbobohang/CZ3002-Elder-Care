@@ -34,6 +34,8 @@ import MedStatus from './Components/patient/MedStatus';
 import DoctorHome from './Components/doctor/DoctorHome';
 import SymptomChecker from './Components/patient/SymptomChecker';
 import ProfileConfirmed from './Components/patient/ProfileConfirmed';
+import Recommendations from './Components/patient/Recommendations';
+
 
 //Scroll to top
 import ScrollToTop from './Components/utils/ScrollToTop';
@@ -122,6 +124,10 @@ function App() {
 						<Route
 							path='symptoms-checker'
 							element={<PrivateRoute component={SymptomChecker} />}
+						/>
+						<Route
+							path='recommendations'
+							element={<PrivateRoute component={Recommendations} />}
 						/>
 					</Routes>
 				</ScrollToTop>
