@@ -2,10 +2,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-color: var(--primary-bg);
 }
 
 .profileContainer {
-	background-color: var(--secondary-green);
 	flex-direction: row;
 	width: 1024px;
 	justify-content: center;
