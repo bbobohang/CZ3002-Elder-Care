@@ -16,12 +16,15 @@ const RecordSchema = new mongoose.Schema({
 	},
 	address: {
 		type: String,
+		default: 'NTU SCSE',
 	},
 	block_no: {
 		type: String,
+		default: 'Software Lab 3',
 	},
-	psotal_code: {
+	postal_code: {
 		type: String,
+		default: '123456',
 	},
 	medical_conditions: {
 		type: String,

@@ -16,12 +16,14 @@ const MedAccept = () => {
 	const inputRef = useRef();
 
 	useEffect(() => {
-		const fetchData = () => {
-			const data = axios.get(`/api/med/all`).then((response) => {
+		const fetchData = async () => {
+			axios.get(`/api/med/all`).then((response) => {
 				setMedOrder(response.data);
+				console.log(response.data);
 			});
-			const name = axios.get(`/api/auth/check`).then((response) => {
+			axios.get(`/api/auth/check`).then((response) => {
 				setUsername(response.data);
+				console.log(response.data);
 			});
 		};
 		fetchData();
@@ -96,10 +98,10 @@ const MedAccept = () => {
 						<h1>
 							Welcome Back
 							<br />
-							{username.name}
+							Dr {username.name}
 						</h1>
 						<p>
-							{username.role}
+							{username.type}
 							<br /> {username.email}
 						</p>
 						<button className='headerBtn'>ACCEPT MEDICINE</button>

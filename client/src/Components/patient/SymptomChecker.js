@@ -35,6 +35,7 @@ const SymptomChecker = () => {
 			.post(`/api/symptoms/predict`, postData, axiosConfig)
 			.then((response) => {
 				console.log(response);
+
 				/*
 				if(symptoms === [] || gender === ''){
 					console.log("Error")
@@ -44,11 +45,12 @@ const SymptomChecker = () => {
 				}
 				*/
 				navigate('/recommendations',{state:{results: response.data}});
+
 			})
 			.catch(function(error) {
 				console.log(error);
 			});
-		
+
 		// console.log(String(symptoms));
 		// console.log(String(gender));
 		// console.log(String(birthRef.current.value));
@@ -117,7 +119,9 @@ const SymptomChecker = () => {
 							id='symptoms'
 							multiple
 							onChange={onOptionChangeHandler}
+
 							style={{"height" : "200px"}}
+
 						>
 							<option value='10'>Abdominal pain</option>
 

@@ -38,7 +38,7 @@ router.get('/all', async (req, res) => {
 // @route GET all
 // @descr Get all symptoms with their chosen symptoms
 // @role Patient
-router.get('/predict', getToken, async (req, res) => {
+router.post('/predict', getToken, async (req, res) => {
 	try {
 		const token = req.body.medicToken;
 		const apiUrl = process.env.priaid_healthservice_url;

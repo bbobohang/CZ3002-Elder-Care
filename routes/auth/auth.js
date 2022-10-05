@@ -44,14 +44,28 @@ router.post('/register', async (req, res) => {
 		await user.save();
 		console.log('User registered');
 
-		//Storing JWT in cookies to authenticate user
-		const token = jwt.sign({ id: user._id }, process.env.jwtSecret);
+		//Maybe should not store the email in the token
+		var token = jwt.sign(
+			{ id: user._id, email: user.email, name: user.name, role: user.role },
+			process.env.jwtSecret
+		);
+		//If role == doctor, store the doctorType in JWT as well
+		if (user.role === 'doctor') {
+			token = jwt.sign(
+				{
+					id: user._id,
+					email: user.email,
+					name: user.name,
+					role: user.role,
+					type: user.doctorType,
+				},
+				process.env.jwtSecret
+			);
+		}
 		const { password, ...others } = user._doc;
 		res
 			.cookie('access_token', token, {
 				httpOnly: true,
-				secure: true,
-				expires: new Date(Date.now() + 3600000),
 			})
 			.status(200)
 			.json({ ...others });
@@ -77,10 +91,24 @@ router.post('/login', async (req, res) => {
 			return res.status(400).json({ errors: { msg: 'Invalid Credentials' } });
 
 		//Maybe should not store the email in the token
-		const token = jwt.sign(
+		var token = jwt.sign(
 			{ id: user._id, email: user.email, name: user.name, role: user.role },
 			process.env.jwtSecret
 		);
+		//If role == doctor, store the doctorType in JWT as well
+		if (user.role === 'doctor') {
+			token = jwt.sign(
+				{
+					id: user._id,
+					email: user.email,
+					name: user.name,
+					role: user.role,
+					type: user.doctorType,
+				},
+				process.env.jwtSecret
+			);
+		}
+
 		const { password, ...others } = user._doc;
 		console.log('User Login');
 
@@ -113,12 +141,7 @@ router.post('/logout', (req, res) => {
 //Checking if the user token is in cookies, return user id
 router.get('/check', verifyToken, (req, res) => {
 	console.log(req.user);
-	return res.status(200).json({
-		id: req.user.id,
-		name: req.user.name,
-		email: req.user.email,
-		role: req.user.role,
-	});
+	return res.status(200).json(req.user);
 });
 
 module.exports = router;

@@ -34,29 +34,20 @@ const Login = () => {
 				password: refPassword.current.value,
 			};
 
-			axios
-				.post(`/api/auth/login`, postData, axiosConfig, {
-					withCredentials: true,
-					crendentials: true,
-				})
-				.then(
-					(response) => {
-						if (response.status === 200) {
-							cookies.set('access_token', response.data, { path: '/' });
-						} else {
-							console.log('login error');
-						}
-						if (response.data.role === 'patient') {
-							navigate('/phome', { replace: true });
-						} else {
-							navigate('/dhome', { replace: true });
-						}
-					},
-					(reason) => {
-						console.error(reason);
-						setError('Invalid Username or Password!');
+			axios.post(`/api/auth/login`, postData, axiosConfig).then(
+				(response) => {
+					console.log(response);
+					if (response.data.role === 'patient') {
+						navigate('/phome', { replace: true });
+					} else {
+						navigate('/dhome', { replace: true });
 					}
-				);
+				},
+				(reason) => {
+					console.error(reason);
+					setError('Invalid Username or Password!');
+				}
+			);
 		} catch (error) {
 			console.log(error);
 		}
