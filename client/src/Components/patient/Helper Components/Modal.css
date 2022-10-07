@@ -1,8 +1,10 @@
 .modal-show {
-  padding: 100px 200px;
+  padding: 100px 500px;
   display: block;
-  margin: 100px auto 0;
+  margin: 200px auto 0;
   font-size: 18px;
+  position: absolute;
+  z-index: 10;
 }
 
 .modal-hide {
@@ -44,20 +46,35 @@ body.active-modal {
 }
 .modal-content {
   position: absolute;
-  top: 40%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
-  line-height: 1.4;
+  line-height: 1.5;
   background: #f1f1f1;
   padding: 14px 28px;
   border-radius: 3px;
-  max-width: 600px;
-  min-width: 300px;
+  min-height: 190px;
+  max-height: 250px;
+  max-width: 700px;
+  min-width: 500px;
 }
 
 .close-modal {
   position: absolute;
+  left: 10px;
   top: 10px;
+  padding: 5px 7px;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 10px;
   right: 10px;
   padding: 5px 7px;
+}
+
+.words-container {
+  position: absolute;
+  top: 40px;
+  left: 40px;
 }
