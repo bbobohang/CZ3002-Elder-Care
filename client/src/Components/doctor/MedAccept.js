@@ -35,6 +35,7 @@ const MedAccept = () => {
 		axios.post(`/api/med/accept/${e.currentTarget.id}`).then((response) => {
 			console.log(response);
 			setUpdate(!update);
+			alert('Medication Accepted!');
 		});
 	};
 	const openPopup = (e) => {
@@ -59,6 +60,7 @@ const MedAccept = () => {
 				console.log(response);
 				setUpdate(!update);
 				setPopup(!popup);
+				alert('Medication Rejected!');
 			});
 	};
 

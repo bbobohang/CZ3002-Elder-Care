@@ -4,7 +4,7 @@ import Navbar from '../../Components/patient/Navbar';
 import Footer from '../../Components/patient/Footer';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import CalendarComponent from './CalendarContainer';
+import CalendarComponent from './CalendarComponent';
 const MedType = [
 	{
 		name: 'Allegies',

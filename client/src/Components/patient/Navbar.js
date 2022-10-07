@@ -28,15 +28,15 @@ const Navbar = ({ role }) => {
 						<ul className='navList'>
 							<li className='navItem'>
 								<a className='listItem' href='/dhome'>
+									Appointments
+								</a>
+							</li>
+							<li className='navItem'>
+								<a className='listItem' href='/dashboard'>
 									Dashboard
 								</a>
 							</li>
 
-							<li className='navItem'>
-								<a className='listItem' href='#projects'>
-									Appointments
-								</a>
-							</li>
 							<li className='navItem'>
 								<a className='listItem' href='/dmed/accept'>
 									Accept Meds
@@ -87,8 +87,8 @@ const Navbar = ({ role }) => {
 								</a>
 							</li>
 							<li className='navItem'>
-								<a className='listItem' href='#experiences'>
-									Wallet
+								<a className='listItem' href='/symptoms-checker'>
+									Symptoms
 								</a>
 							</li>
 

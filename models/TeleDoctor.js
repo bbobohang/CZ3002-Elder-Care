@@ -5,6 +5,9 @@ const TeleDoctorSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	patient_name: {
+		type: String,
+	},
 	time: {
 		type: String,
 	},
