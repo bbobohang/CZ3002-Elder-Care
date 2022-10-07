@@ -1,37 +1,37 @@
 .docTypeCard {
-	width: 180px;
-	height: 150px;
-	display: flex;
-	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-	border-radius: 10px;
-	justify-content: center;
-    text-align: center;
-	align-items: center;
-	font-weight: bold;
-	font-size: 20px;
-	cursor: pointer;
-	background-color: white;
+  width: 180px;
+  height: 150px;
+  display: flex;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 10px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: white;
 }
 .docTypeCard:hover {
-	box-shadow: 0 3px 20px rgb(1, 84, 58);
+  box-shadow: 0 3px 20px rgb(1, 84, 58);
 }
 .docTypeCardselectedType {
-	width: 180px;
-	height: 150px;
-	display: flex;
-	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-	border-radius: 10px;
-	justify-content: center;
-    text-align: center;
-	align-items: center;
-	font-weight: bold;
-	font-size: 20px;
-	cursor: pointer;
-	background: var(--primary-green);
+  width: 180px;
+  height: 150px;
+  display: flex;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 10px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  background: var(--primary-green);
 }
 
 .docWrapper {
-	width: 1024px;
-	height: 1100px;
-	margin-top: 60px;
+  width: 1024px;
+  height: 1200px;
+  margin-top: 60px;
 }
