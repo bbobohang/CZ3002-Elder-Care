@@ -11,10 +11,11 @@ router.post('/create', verifyToken, async (req, res) => {
 	try {
 		const data = {
 			patient_id: req.user.id,
+			patient_name: req.user.name,
 			time: req.body.time,
-			date: req.body.date,			
+			date: req.body.date,
 			doctorType: req.body.doctorType,
-            address: req.body.address
+			address: req.body.address,
 		};
 
 		const exist = await HomeDoctor.findOne({
