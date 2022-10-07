@@ -46,7 +46,11 @@ const Recommendations = () => {
 			</div>
 			<div className='recoWrapper'>
 				<div className='recoContainer'>
-					<h2>| Appropriate Doctors to Consult Based on your Symptoms</h2>
+					{results.length === 0 ? (
+						<h3>No results</h3>
+					):(
+						<h2>| Appropriate Doctors to Consult Based on your Symptoms</h2>
+					)}
 					{results.map((item) => (
 						<div className='list'>
 							{item.Accuracy > 70 ? (
