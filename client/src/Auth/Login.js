@@ -38,7 +38,7 @@ const Login = () => {
 				(response) => {
 					console.log(response);
 					if (response.data.role === 'patient') {
-						navigate('/phome', { replace: true });
+						navigate('/record-checker', { replace: true });
 					} else {
 						navigate('/dhome', { replace: true });
 					}

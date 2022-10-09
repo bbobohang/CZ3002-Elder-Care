@@ -37,6 +37,9 @@ import SymptomChecker from './Components/patient/SymptomChecker';
 import ProfileConfirmed from './Components/patient/ProfileConfirmed';
 import Recommendations from './Components/patient/Recommendations';
 
+//Record checker
+import RecordChecker from './Auth/RecordChecker';
+
 //Scroll to top
 import ScrollToTop from './Components/utils/ScrollToTop';
 
@@ -48,6 +51,10 @@ function App() {
 					<Routes>
 						<Route path='/' element={<Login />} />
 						<Route path='/register' element={<Register />} />
+						<Route
+							path='/record-checker'
+							element={<PrivateRoute component={RecordChecker} role={'patient'} />}
+						/>
 						<Route
 							path='phome'
 							element={<PrivateRoute component={PatientHome} role={'patient'} />}
