@@ -7,6 +7,7 @@
 
 Elder Care is an web application built for NTU CZ3002 course with the intention to provide elderly with personal care solution with technology to allow them to age and recover gracefully.
 
+Check out the live demo [here](https://elder-care-ntu.herokuapp.com/)
 ## Key Features
 - Embedded Tableau Dashboard
 - Medication Booking 
