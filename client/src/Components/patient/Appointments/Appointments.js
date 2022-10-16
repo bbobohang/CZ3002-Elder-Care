@@ -27,7 +27,7 @@ const Appointments = () => {
 	useEffect(() => {
 		axios.get(`/api/appt/all`).then((response) => {
 			const tempAppointment = response.data;
-			const newArray = tempAppointment.map((event) => {
+			const newArray = Object.keys(tempAppointment).map((event) => {
 				if (event['year'] == null) {
 					event['start'] = null;
 					event['end'] = null;
