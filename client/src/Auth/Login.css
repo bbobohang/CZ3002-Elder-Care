@@ -95,32 +95,7 @@ c {
 	margin-left: auto;
 }
 
-.passContainer {
+.credentials {
 	background-color: #fff;
     color: #495057;
-    border-style: solid;
-	border-color: #00856F;
-    border-radius: 8px;
-	padding: 20px 15px;
-	margin: 10px 0px;
-	width: 335px;
-	display: flex;
-    box-shadow: 0px 4px 20px -10px #000000;
-	height: 20px;
-}
-
-.email {
-	background-color: #fff;
-    color: #495057;
-    border-style: solid;
-	border-color: #00856F;
-    border-radius: 8px;
-	padding: 20px 15px;
-	margin: 10px 0px;
-	width: 335px;
-    justify-content: flex-end;
-	display: flex;
-    box-shadow: 0px 4px 20px -10px #000000;
-	outline: none;
-}
-
+	border: 2px;
