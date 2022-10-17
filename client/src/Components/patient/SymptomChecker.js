@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState, useRef } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../../Components/patient/Navbar';
 import Footer from '../../Components/patient/Footer';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 import './SymptomChecker.css';
-
 const SymptomChecker = () => {
 	//Getting medicAPI
 	const navigate = useNavigate();
@@ -14,11 +14,12 @@ const SymptomChecker = () => {
 	const [symptoms, setSymptoms] = useState([]);
 	const [gender, setGender] = useState('');
 	const [age, setAge] = useState('');
-
+	const [isloading, setIsLoading] = useState(false);
 	const handleClick = async () => {
 		// axios.get().then((response) => {
 		// 	console.log(response);
 		// });
+		setIsLoading(true);
 		let axiosConfig = {
 			headers: {
 				'Content-Type': 'application/json',
@@ -44,8 +45,7 @@ const SymptomChecker = () => {
 					navigate('/recommendations',{state:{results: response.data}});
 				}
 				*/
-				navigate('/recommendations',{state:{results: response.data}});
-
+				navigate('/symptoms-checker/recommendations', { state: { results: response.data } });
 			})
 			.catch(function(error) {
 				console.log(error);
@@ -119,9 +119,7 @@ const SymptomChecker = () => {
 							id='symptoms'
 							multiple
 							onChange={onOptionChangeHandler}
-
-							style={{"height" : "200px"}}
-
+							style={{ height: '200px' }}
 						>
 							<option value='10'>Abdominal pain</option>
 
@@ -271,7 +269,7 @@ const SymptomChecker = () => {
 					</form>
 					<div className='next'>
 						<button className='nextButton' onClick={handleClick}>
-							NEXT
+							{isloading === false ? <p>NEXT</p> : <ClipLoader color='#36d7b7' />}
 						</button>
 					</div>
 				</div>
