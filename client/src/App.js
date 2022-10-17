@@ -5,6 +5,7 @@ import Register from './Auth/Register';
 import Login from './Auth/Login';
 //TeleDoctor
 import TeleDoctor from './Components/patient/TeleDoctor';
+import TeleDoctorEdit from './Components/patient/TeleDoctorEdit';
 import TeleDoctorPreConfirm from './Components/patient/TeleDoctorPreConfirm';
 import TeleDoctorConfirmed from './Components/patient/TeleDoctorConfirmed';
 //HomeDoctor
@@ -36,6 +37,8 @@ import SymptomChecker from './Components/patient/SymptomChecker';
 import ProfileConfirmed from './Components/patient/ProfileConfirmed';
 import Recommendations from './Components/patient/Recommendations';
 
+//Record checker
+import RecordChecker from './Auth/RecordChecker';
 
 //Scroll to top
 import ScrollToTop from './Components/utils/ScrollToTop';
@@ -49,12 +52,20 @@ function App() {
 						<Route path='/' element={<Login />} />
 						<Route path='/register' element={<Register />} />
 						<Route
+							path='/record-checker'
+							element={<PrivateRoute component={RecordChecker} role={'patient'} />}
+						/>
+						<Route
 							path='phome'
 							element={<PrivateRoute component={PatientHome} role={'patient'} />}
 						/>
 						<Route
 							path='/teleDoctor'
 							element={<PrivateRoute component={TeleDoctor} role={'patient'} />}
+						/>
+						<Route
+							path='/teleDoctor/edit'
+							element={<PrivateRoute component={TeleDoctorEdit} role={'patient'} />}
 						/>
 						<Route
 							path='teleDoctor/preconfirm'
@@ -70,7 +81,7 @@ function App() {
 						/>
 						<Route
 							path='/homeDoctor'
-							element={<PrivateRoute component={HomeDoctor} role={'doctor'} />}
+							element={<PrivateRoute component={HomeDoctor} role={'patient'} />}
 						/>
 						<Route
 							path='homeDoctor/preconfirm'
@@ -126,7 +137,7 @@ function App() {
 							element={<PrivateRoute component={SymptomChecker} />}
 						/>
 						<Route
-							path='recommendations'
+							path='symptoms-checker/recommendations'
 							element={<PrivateRoute component={Recommendations} />}
 						/>
 					</Routes>
