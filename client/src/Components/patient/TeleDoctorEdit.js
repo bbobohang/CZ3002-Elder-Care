@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../Components/patient/Navbar';
 import Footer from '../../Components/patient/Footer';
 import CalendarComponent from './CalendarComponent';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import './MedDelivery.css';
 import './PatientHome.css';
@@ -64,16 +64,33 @@ const ConsultTime = [
 	},
 ];
 
-const TeleDoctor = () => {
-	const [date, setDate] = useState('');
+const TeleDoctorEdit = () => {
+	const navigate = useNavigate();
+	const location = useLocation();
+	const previousAppt = location.state.editingAppt;
+	console.log(location.state);
+	const [date, setDate] = useState(null);
 	const [timeState, setTime] = useState('');
-	const [doctorType, setDoctorType] = useState('');
+	const [doctorType, setDoctorType] = useState('GP');
 	const [teleConsultSuccess, setTeleConsultSuccess] = useState(false);
 
-	const navigate = useNavigate();
+	useEffect(() => {
+		setTimeout(function() {
+			console.log('Timeout for 5 secs');
+		}, 5000);
+
+		setDate(new Date(previousAppt.year, previousAppt.month, previousAppt.day));
+
+		if (location.state.hour <= 9) {
+			setTime('0' + previousAppt.hour.toString() + ':00');
+		} else {
+			setTime(previousAppt.hour.toString() + ':00');
+		}
+	}, []);
 
 	const dataChangeHandler = (date) => {
 		setDate(date);
+		console.log(date);
 	};
 
 	//Submit button
@@ -88,11 +105,13 @@ const TeleDoctor = () => {
 			time: timeState,
 			doctorType: doctorType,
 			date: String(date).slice(0, 15),
+			appt_id: previousAppt.appt_id,
 		};
 
-		axios.post(`/api/teledoc/create`, postData, axiosConfig).then((response) => {
+		axios.post(`/api/teledoc/edit`, postData, axiosConfig).then((response) => {
 			setTeleConsultSuccess(true);
 			console.log(response);
+			console.log(postData.date);
 		});
 
 		navigate('/teleDoctor/preconfirm', {
@@ -100,7 +119,6 @@ const TeleDoctor = () => {
 				teleConsultDetails: postData,
 			},
 		});
-		console.log(date);
 	};
 
 	return (
@@ -118,7 +136,7 @@ const TeleDoctor = () => {
 							home.
 							<br /> Schedule an appointment at your convenience.
 						</p>
-						<button className='headerBtn'>BOOK AN APPOINTMENT</button>
+						<button className='headerBtn'>Editing Appointment</button>
 					</div>
 					<div className='headerRight headerMed'></div>
 					<div className='headerBanner'>
@@ -189,7 +207,7 @@ const TeleDoctor = () => {
 					</div>
 					<div className='submitContainer'>
 						<button className='headerBtn' onClick={handleClick}>
-							Book Now
+							Save Changes
 						</button>
 					</div>
 				</div>
@@ -199,4 +217,4 @@ const TeleDoctor = () => {
 	);
 };
 
-export default TeleDoctor;
+export default TeleDoctorEdit;

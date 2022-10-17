@@ -22,11 +22,9 @@ const MedStatus = () => {
 		});
 		axios.get(`/api/med/count/accepted`).then((response) => {
 			setAccepted(response.data);
-			console.log(response.data);
 		});
 		axios.get(`/api/med/count/pending`).then((response) => {
 			setPending(response.data);
-			console.log(response.data);
 		});
 		axios.get(`/api/record/current`).then((response) => {
 			setAdditionalInfo(response.data);

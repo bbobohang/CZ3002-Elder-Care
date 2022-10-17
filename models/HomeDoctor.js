@@ -5,13 +5,16 @@ const HomeDoctorSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	patient_name: {
+		type: String,
+	},
 	time: {
 		type: String,
 	},
 	date: {
 		type: String,
 	},
-    address: {
+	address: {
 		type: String,
 	},
 	doctorType: {
