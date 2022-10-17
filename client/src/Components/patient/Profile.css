@@ -43,6 +43,7 @@
 .formDropdown{
 	background-color: #fff;
     color: #495057;
+	border: 2px;
     border-style: solid;
 	border-color: #00856F;
     border-radius: 8px;
