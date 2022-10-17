@@ -38,7 +38,7 @@ const Login = () => {
 				(response) => {
 					console.log(response);
 					if (response.data.role === 'patient') {
-						navigate('/phome', { replace: true });
+						navigate('/record-checker', { replace: true });
 					} else {
 						navigate('/dhome', { replace: true });
 					}
@@ -86,13 +86,13 @@ const Login = () => {
 					<div className='Login'>
 						<h1>Sign in</h1>
 						<input
-							className='email'
+							className='credentials'
 							ref={refEmail}
 							type='text'
 							name='email'
 							placeholder='Enter Email'
 						/>
-						<div className='passContainer'>
+						<div className='credentials'>
 							<input
 								className='password'
 								ref={refPassword}
