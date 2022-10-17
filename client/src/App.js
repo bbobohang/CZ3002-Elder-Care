@@ -137,7 +137,7 @@ function App() {
 							element={<PrivateRoute component={SymptomChecker} />}
 						/>
 						<Route
-							path='recommendations'
+							path='symptoms-checker/recommendations'
 							element={<PrivateRoute component={Recommendations} />}
 						/>
 					</Routes>

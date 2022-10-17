@@ -17,6 +17,8 @@ const Profile = () => {
 	const navigate = useNavigate();
 	const [accepted, setAccepted] = useState('3');
 	const [pending, setPending] = useState('3');
+	const [records, setRecords] = useState({});
+	const [email, setEmail] = useState({})
 
 	useEffect(() => {
 		axios.get(`/api/med/current`).then((response) => {
@@ -29,6 +31,14 @@ const Profile = () => {
 		});
 		axios.get(`/api/med/count/pending`).then((response) => {
 			setPending(response.data);
+			console.log(response.data);
+		});
+		axios.get(`/api/record/current`).then((response) => {
+			setRecords(response.data);
+			console.log(response.data);
+		});
+		axios.get(`/api/auth/check`).then((response) => {
+			setEmail(response.data);
 			console.log(response.data);
 		});
 	}, []);
@@ -48,11 +58,15 @@ const Profile = () => {
 			block_no: refInput.current[7].value,
 			postal_code: refInput.current[8].value,
 		};
-
-		axios.post(`/api/record/update`, postData, axiosConfig).then((response) => {
-			console.log(response);
-			navigate('/profile/confirmation', { replace: true });
-		});
+		if(postData.name !== '' && postData.address !== '' && postData.block_no !== '' && postData.postal_code !== ''){
+			axios.post(`/api/record/update`, postData, axiosConfig).then((response) => {
+				console.log(response);
+				navigate('/profile/confirmation', { replace: true });
+			});
+		}
+		else{
+			alert("Please fill in ALL the required fields (marked with *)")
+		}
 	};
 
 	return (
@@ -63,11 +77,11 @@ const Profile = () => {
 					<div className='headerLeft'>
 						<h1>
 							<div style={{color: "#00856F"}}>Welcome,</div>
-							Mr Marco Polo
+							{`${records.name}`}
 						</h1>
 						<p>
-							marcopolo0001@gmail.com
-							<br /> +65 1234 5678 
+							{`${email.email}`}
+							<br /> {`${records.address} ${records.block_no} ${records.postal_code}`} 
 						</p>
 						<button className='headerBtn'>
 							MANAGE PERSONAL INFO
@@ -95,7 +109,7 @@ const Profile = () => {
 						<form ref={refInput}>
 							<div className='inputList'>
 								<div className='inputItemLeft'>
-									<p>First Name (as on passport)</p>
+									<p>First Name (as on passport)*</p>
 									<input
 										className='form'
 										type='text'
@@ -104,7 +118,7 @@ const Profile = () => {
 									/>
 								</div>
 								<div className='inputItem'>
-									<p>Last Name (as on passport)</p>
+									<p>Last Name (as on passport)*</p>
 									<input
 										className='form'
 										type='text'
@@ -413,7 +427,7 @@ const Profile = () => {
 							</div>
 							<div className='inputList'>
 								<div className='inputItemLeft'>
-									<p>Address</p>
+									<p>Address*</p>
 									<input
 										className='form'
 										type='text'
@@ -422,7 +436,7 @@ const Profile = () => {
 									/>
 								</div>
 								<div className='inputItem'>
-									<p>Block/Unit No.</p>
+									<p>Block/Unit No.*</p>
 									<input
 										className='form'
 										type='text'
@@ -431,7 +445,7 @@ const Profile = () => {
 									/>
 								</div>
 								<div className='inputItemRight'>
-									<p>Postal Code</p>
+									<p>Postal Code*</p>
 									<input
 										className='form'
 										type='text'
@@ -573,19 +587,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-/*
-									<input
-										className='form'
-										type='text'
-										name='medical'
-										placeholder='Pre-Existing Medical Conditions (if any)'
-									/>	
-
-									<Select
-										closeMenuOnSelect={false}
-										components={animatedComponents}
-										isMulti
-										options={conditions}
-									/>
-*/

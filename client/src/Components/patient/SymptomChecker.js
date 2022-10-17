@@ -45,7 +45,8 @@ const SymptomChecker = () => {
 					navigate('/recommendations',{state:{results: response.data}});
 				}
 				*/
-				navigate('/recommendations', { state: { results: response.data } });
+				navigate('/symptoms-checker/recommendations', { state: { results: response.data } });
+
 			})
 			.catch(function(error) {
 				console.log(error);
