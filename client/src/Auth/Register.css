@@ -21,6 +21,7 @@
 
 .Register {
 	margin-left: auto;
+	margin-right: auto;
 }
 
 b {
@@ -55,6 +56,7 @@ c {
 .form {
 	background-color: #fff;
     color: #495057;
+	border: 2px;
     border-style: solid;
 	border-color: #00856F;
     border-radius: 8px;
@@ -70,12 +72,13 @@ c {
 .form-role {
 	background-color: #fff;
     color: #495057;
+	border: 2px;
     border-style: solid;
 	border-color: #00856F;
     border-radius: 8px;
 	padding: 15px 15px;
 	margin: 10px 0px;
-	width: 369px;
+	width: 314px;
     justify-content: flex-end;
 	display: flex;
     box-shadow: 0px 4px 20px -10px #000000;
@@ -83,7 +86,7 @@ c {
 }
 
 .RegisterButton {
-    width: 369px;
+    width: 314px;
 	display: flex;
     justify-content: center;
 	color: #fff;
