@@ -32,8 +32,8 @@ const Data = [
     link: "/pmed",
   },
   {
-    title: "Symptoms Checkor",
-    subtitle: "Get list of suggested specialisations for calulated diseases",
+    title: "Symptoms Checker",
+    subtitle: "Get list of suggested specialisations for calculated diseases",
     image: HomeCare,
     link: "/symptoms-checker",
   },
