@@ -116,19 +116,19 @@ const Register = () => {
 						<h1>Sign Up</h1>
 						<form ref={refInput}>
 							<input
-								className='form'
+								className='credentials'
 								type='text'
 								name='Email'
 								placeholder='Enter Email'
 							/>
 							<input
-								className='form'
+								className='credentials'
 								type='text'
 								name='Name'
 								placeholder='Full Name'
 							/>
 							<input
-								className='form'
+								className='credentials'
 								type='password'
 								name='Password'
 								placeholder='Password'
@@ -140,7 +140,7 @@ const Register = () => {
 							</select>
 							{showhide === 'doctor' && (
 								<input
-									className='form'
+									className='credentials'
 									type='text'
 									name='docType'
 									placeholder='Doctor Type'
