@@ -16,7 +16,7 @@ Check out the live demo [here.](https://elder-care-ntu.herokuapp.com/)
 ## Getting Started
 Download or clone project from github:
 ```
-$ git clone https://github.com/bbobohang/CZ3002.git
+$ git clone https://github.com/bbobohang/CZ3002-Elder-Care.git
 ```
 
 ## Install - Local
