@@ -10,10 +10,14 @@ import './Register.css';
 const cookies = new Cookies();
 const Register = () => {
 	const [register, setRegister] = useState({});
-	const [error, setError] = useState({});
+	const [error, setError] = useState();
 	const refInput = useRef();
 	const navigate = useNavigate();
 	const [showhide, setShowhide] = useState('');
+
+	const isValidEmail = (email) => {
+		return /\S+@\S+\.\S+/.test(email);
+	}
 
 	const handleshowhide = (event) => {
 		const getuser = event.target.value;
@@ -41,16 +45,31 @@ const Register = () => {
 					doctorType: refInput.current[4].value,
 				};
 			}
-
-			axios.post('/api/auth/register', postData, axiosConfig).then((response) => {
-				setRegister(response);
-				console.log(response);
-				if (response.data.role === 'patient') {
-					navigate('/record-checker', { replace: true });
-				} else {
-					navigate('/dhome', { replace: true });
-				}
-			});
+			if(postData.email === '' || postData.name === '' || postData.password === '' || postData.role === '' || postData.doctorType === ''){
+				alert("Please filled in all fields!")
+			}
+			else if(!isValidEmail(postData.email)){
+				alert("Please enter a valid email!")
+			}
+			else if(postData.password.length < 6){
+				alert("Password must have at least 6 characters!")
+			}
+			else{
+				axios.post('/api/auth/register', postData, axiosConfig).then(
+					(response) => {
+						setRegister(response);
+						console.log(response);
+						if (response.data.role === 'patient') {
+							navigate('/record-checker', { replace: true });
+						} else {
+							navigate('/dhome', { replace: true });
+						}
+					},(reason) => {
+						console.error(reason);
+						setError('Email already registered.');
+					}
+				);
+			}
 			// let axiosConfig = {
 			// 	headers: {
 			// 		'Content-Type': 'application/json',
@@ -153,6 +172,7 @@ const Register = () => {
 						</button>
 						{register.email && <div>{register.name} has been registered! </div>}
 						{register.errors && <div>{register.errors.msg} </div>}
+						{error ? <div>{error}</div> : null}
 					</div>
 				</div>
 			</div>
