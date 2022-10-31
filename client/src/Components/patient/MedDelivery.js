@@ -114,18 +114,22 @@ const MedDelivery = () => {
 			date: String(date).slice(0, 15),
 			price: typeState.price * parseInt(quantityRef.current.value.split(' ')[0]),
 		};
+		if(postData.time === '' || postData.medication_name === '' || postData.medication_quantity === '' || postData.date === '' || postData.price === ''){
+			alert("Please filled in all fields!")
+		}
+		else{
+			axios.post(`/api/med/create`, postData, axiosConfig).then((response) => {
+				setMedSucess(true);
+				console.log(response);
+			});
 
-		axios.post(`/api/med/create`, postData, axiosConfig).then((response) => {
-			setMedSucess(true);
-			console.log(response);
-		});
-
-		navigate('/pmed/preconfirm', {
-			state: {
-				orderDetails: postData,
-			},
-		});
-		console.log(date);
+			navigate('/pmed/preconfirm', {
+				state: {
+					orderDetails: postData,
+				},
+			});
+			console.log(date);
+		}
 	};
 	return (
 		<>
