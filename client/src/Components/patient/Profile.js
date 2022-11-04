@@ -17,7 +17,7 @@ const Profile = () => {
 	const navigate = useNavigate();
 	const [accepted, setAccepted] = useState('3');
 	const [pending, setPending] = useState('3');
-	const [records, setRecords] = useState({});
+	const [records, setRecords] = useState({name: '', address:'', block_no:'', postal_code:''});
 	const [email, setEmail] = useState({})
 
 	useEffect(() => {
