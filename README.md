@@ -10,7 +10,7 @@ Check out the live demo [here.](https://elder-care-ntu.herokuapp.com/)
 ## Key Features
 # Embedded Tableau Dashboard
 Dashboard for Doctors to have an overview of their patients as well as their medical history<br>
-<img src="https://github.com/bbobohang/CZ3002-Elder-Care/blob/main/assets/Screenshot%202023-05-07%20152419.png" width="1000" height="880">
+<img src="https://github.com/bbobohang/CZ3002-Elder-Care/blob/main/assets/Screenshot%202023-05-07%20152419.png" width="1000" height="700">
 
 
 # Medication Booking 
