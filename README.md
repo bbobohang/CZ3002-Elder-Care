@@ -8,8 +8,14 @@ Elder Care is an web application built for NTU CZ3002 course with the intention 
 
 Check out the live demo [here.](https://elder-care-ntu.herokuapp.com/)
 ## Key Features
-- Embedded Tableau Dashboard
-- Medication Booking 
+# Embedded Tableau Dashboard
+Dashboard for Doctors to have an overview of their patients as well as their medical history
+<img src="https://github.com/bbobohang/CZ3002-Elder-Care/blob/main/assets/Screenshot%202023-05-07%20152419.png" width="150" height="300">
+<br>
+
+# Medication Booking 
+Allows patients to book teledoctor or medication delivery and choose based on preferred date and time
+<img src="https://github.com/bbobohang/CZ3002-Elder-Care/blob/main/assets/Screenshot%202023-05-07%20151759.png" width="150" height="300">
 - [Appointment Calendar](https://www.npmjs.com/package/react-big-calendar)
 - [Symptoms and Specialist Prediction](https://apimedic.com/)
 
